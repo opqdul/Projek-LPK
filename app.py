@@ -2,15 +2,16 @@ koimport streamlit as st
 
 # Kamus gugus fungsi
 gugus_fungsi_kamus = {
-    'COOH':'Asam Karboksilat',
-    'CHO': 'Aldehid',
-    'CO': 'Keton',
-    'OH': 'Alkohol',
-    'NH2': 'Amina',
-    'COO': 'Ester',
-    'C=C': 'Alkena',
-    'C≡C': 'Alkina'
+    'COOH': 'Asam Karboksilat',
+    'CHO': 'Aldehid',
+    'CO': 'Keton',
+    'OH': 'Alkohol',
+    'NH2': 'Amina',
+    'COO': 'Ester',
+    'C=C': 'Alkena',
+    'C≡C': 'Alkina'
 }
+
 
 # Kamus nama senyawa lengkap (tanpa strip)
 kamus_nama_senyawa = {
