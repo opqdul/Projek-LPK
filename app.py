@@ -1,27 +1,4 @@
 import streamlit as st
-# CSS: Background gambar + panel konten semi-transparan
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-image: url("https://cdn.kibrispdr.org/data/14/background-tentang-kimia-2.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    .block-container {
-        background-color: rgba(255, 255, 255, 0.85);
-        padding: 2em;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-
 
 # Kamus gugus fungsi
 gugus_fungsi_kamus = {
