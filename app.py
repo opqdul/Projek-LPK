@@ -51,6 +51,26 @@ kamus_nama_senyawa = {
     'H3C-CH2-CH3':{
         'iupac':'Propana',
         'trivial': ''
+        },
+    'H3C-(CH2)2-CH3':{
+    'iupac': 'Butana',
+    'trivial': 'n-Butana'
+    },
+    'H3C-(CH2)3-CH3':{
+    'iupac': 'Pentana',
+    'trivial': 'n-Pentana'
+    },
+    'H3C-(CH2)4-CH3':{
+    'iupac': 'Heksana',
+    'trivial': 'n-Heksana'
+    },
+    'H3C-(CH2)5-CH3':{
+    'iupac': 'Heptana',
+    'trivial': 'n-Heptana'
+    },
+    'H3C-(CH2)6-CH3':{
+    'iupac': 'Oktana',
+
     },
     'CH2=CH2': {
         'iupac': 'Etena',
