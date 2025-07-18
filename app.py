@@ -18,7 +18,7 @@ kamus_nama_senyawa = {
     'CH3COOH': {'iupac': 'Asam etanoat', 'trivial': 'Asam asetat'},
     'HCOOH': {'iupac': 'Asam metanoat', 'trivial': 'Asam format'},
     'CH3OH':{'iupac':'Metanol','trivial':'Metil alkohol'}'
-    'CH3CH2OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil'},
+     CH3CH2O : {'iupac': Etanol, 'trivial': Alkohol 'etil'},
     'CH3CHO': {'iupac': 'Etanal', 'trivial': 'Asetaldehida'},
     'CH3COCH3': {'iupac': 'Propanon', 'trivial': 'Aseton'},
   'CH3NH2': {'iupac': 'Metilamina', 'trivial': '-'},
