@@ -49,7 +49,7 @@ kamus_nama_senyawa = {
         'trivial': ''
     },
     'H3C-CH2-CH3':{
-        'iupac':'Propana''
+        'iupac':'Propana',
         'trivial': ''
     },
     'CH2=CH2': {
