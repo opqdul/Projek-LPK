@@ -44,6 +44,14 @@ kamus_nama_senyawa = {
         'iupac': 'Metilamina',
         'trivial': '-'
     },
+    'H3C-CH3':{
+        'iupac': 'Etana',
+        'trivial': ''
+    },
+    'H3C-CH2-CH3':{
+        'iupac':'Propana''
+        'trivial': ''
+    },
     'CH2=CH2': {
         'iupac': 'Etena',
         'trivial': 'Etilena'
