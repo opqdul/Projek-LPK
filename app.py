@@ -120,11 +120,10 @@ def identifikasi():
         st.write(f"*Nama Trivial:* {nama_trivial}")
 
 
-option = st.radio(
+option = st.sidebar.radio(
     "Menu:",
-    ("Indentifikasi Gugus Fungsi", "Tentang Aplikasi")
+    ("Indentifikasi Gugus Fungsi", "Tentang Aplikasi")
 )
-
 if option == "Indentifikasi Gugus Fungsi":
     identifikasi();
 elif option == "Tentang Aplikasi":
