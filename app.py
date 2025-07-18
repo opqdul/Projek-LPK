@@ -2,7 +2,7 @@ koimport streamlit as st
 
 # Kamus gugus fungsi
 gugus_fungsi_kamus = {
-    'COOH': 'Asam Karboksilat',
+    'COOH':'Asam Karboksilat',
     'CHO': 'Aldehid',
     'CO': 'Keton',
     'OH': 'Alkohol',
