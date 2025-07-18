@@ -9,6 +9,7 @@ gugus_fungsi_kamus = {
     'OH': 'Alkohol',
     'NH2': 'Amina',
     'COO': 'Ester',
+    'C-C': 'Alkana',
     'C=C': 'Alkena',
     'C≡C': 'Alkina'
 }
