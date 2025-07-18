@@ -1,4 +1,19 @@
 import streamlit as st
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url("https://cdn.kibrispdr.org/data/14/background-tentang-kimia-2.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.title("Aplikasi dengan Background Gambar")
+
 
 # Kamus gugus fungsi
 gugus_fungsi_kamus = {
@@ -129,17 +144,3 @@ if option == "Indentifikasi Gugus Fungsi":
 elif option == "Tentang Aplikasi":
     tentang()
 
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-image: url("https://cdn.kibrispdr.org/data/14/background-tentang-kimia-2.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-st.title("Aplikasi dengan Background Gambar")
