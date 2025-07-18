@@ -15,8 +15,8 @@ gugus_fungsi_kamus = {
 
 # Kamus nama senyawa lengkap (tanpa strip)
 kamus_nama_senyawa = {
-    'CH3COOH': {'iupac': 'Asam etanoat', 'trivial': 'Asam asetat'},
-    'HCOOH': {'iupac': 'Asam metanoat', 'trivial': 'Asam format'},
+    'CH3COOH': {'iupac': 'Asam etanoat', 'trivial': 'Asam asetat'},
+    'HCOOH': {'iupac': 'Asam metanoat', 'trivial': 'Asam format'},
     'CH3OH': {'iupac': 'Metanol', 'trivial': 'Alkohol kayu'},
     'CH3CH2OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil'},
     'CH3CHO': {'iupac': 'Etanal', 'trivial': 'Asetaldehida'},
