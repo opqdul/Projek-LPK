@@ -51,9 +51,7 @@ kamus_nama_senyawa = {
     'H3C-CH2-CH3':{
         'iupac':'Propana',
         'trivial': ''
-        },
-
-    },
+     },
     'CH2=CH2': {
         'iupac': 'Etena',
         'trivial': 'Etilena'
