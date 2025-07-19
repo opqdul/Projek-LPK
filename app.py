@@ -189,7 +189,6 @@ def identifikasi():
                 st.write(f"*Rumus Umum:* {rumus_umum}")
             
             st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
-            st.write(f"*Jenis Hidrokarbon:* {golongan}")
             st.write(f"*Nama IUPAC:* {nama_iupac}")
             st.write(f"*Nama Trivial:* {nama_trivial}")
 
