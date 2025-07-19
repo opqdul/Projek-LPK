@@ -22,7 +22,7 @@ kamus_nama_senyawa = {
     'HCOOH': {'iupac': 'Asam metanoat', 'trivial': 'Asam format'},
     'CH3OH': {'iupac': 'Metanol', 'trivial': 'Alkohol kayu'},
     'CH3CH2OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil'},
-    'HCOH': {'iupac": 'Metanal', ' 'trivial': 'Formaldehid'},
+    'HCOH': {'iupac': 'Metanal', 'trivial': 'Formaldehid'},
     'CH3CHO': {'iupac': 'Etanal', 'trivial': 'Asetaldehida,
     'CH3NH2': {'iupac': 'Metilamina', 'trivial': '-'},
     'CH2CH2': {'iupac': 'Etena', 'trivial': 'Etilena'},
@@ -91,6 +91,7 @@ def identifikasi_ikatan(rumus):
 # Judul
 def identifikasi():
     st.title("🧪 Identifikasi Gugus Fungsi & Penamaan Senyawa Organik")
+    st.image("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/WhatsApp%20Image%202025-07-19%20at%2013.17.34_bfbfabba.jpg", use_container_width=True)
 
     # Input
     input_rumus = st.text_input("Masukkan rumus senyawa (contoh: CH3CH2OH atau CH3-CH2-OH):")
