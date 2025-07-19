@@ -101,7 +101,7 @@ kamus_nama_senyawa = {
 def tentang():
     st.title("Isi tentang")
     st.markdown("""
-    Aplikasi web ini dibuat dengan tujuan utama untuk memudahkan pelajar dan mahasiswa dalam memahami serta mengklasifikasikan gugus fungsi dalam senyawa organik. 
+    Website ini dibuat dengan tujuan utama untuk memudahkan pelajar dan mahasiswa dalam memahami serta mengklasifikasikan gugus fungsi dalam senyawa organik. 
     
     Dalam pembelajaran kimia organik, pengenalan struktur senyawa dan pengklasifikasian gugus fungsinya seringkali menjadi tantangan, terutama bagi pemula. Oleh karena itu, aplikasi ini hadir sebagai media interaktif yang dapat membantu pengguna mengidentifikasi berbagai gugus fungsi seperti alkohol, eter, aldehid, keton, asam karboksilat, dan lain-lain secara lebih mudah dan cepat.
 
