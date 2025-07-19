@@ -177,10 +177,13 @@ def identifikasi():
         if rumus in kamus_nama_senyawa:
             nama_iupac = kamus_nama_senyawa[rumus]['iupac']
             nama_trivial = kamus_nama_senyawa[rumus]['trivial']
+            
             if "gambar" in kamus_nama_senyawa[rumus]:
                 gambar = kamus_nama_senyawa[rumus]['gambar']
+                
             if "golongan" in kamus_nama_senyawa[rumus]:
                 golongan = kamus_nama_senyawa[rumus]['golongan']
+                
             if "rumus_umum" in kamus_nama_senyawa[rumus]:
                 rumus_umum = kamus_nama_senyawa[rumus]['rumus_umum']
         else:
@@ -207,8 +210,10 @@ def identifikasi():
             st.write(f"*Rumus Distandarisasi:* {rumus}")
             if rumus_umum != "-":
                 st.write(f"*Rumus Umum:* {rumus_umum}")
+                
             if golongan != "-":
-                st.write(f"*Golongan Senyawa:* {', '.join(hasil)}")
+                st.write(f"*Golongan Senyawa:* {golongan}")
+                
             st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
             st.write(f"*Nama IUPAC:* {nama_iupac}")
             st.write(f"*Nama Trivial:* {nama_trivial}")
