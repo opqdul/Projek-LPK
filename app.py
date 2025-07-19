@@ -128,6 +128,7 @@ def identifikasi():
         st.write(f"*Rumus Diberikan:* {input_rumus}")
         st.write(f"*Rumus Distandarisasi:* {rumus}")
         st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
+        st.write(f"*Jenis Hidrokarbon:* {hasil}")
         st.write(f"*Nama IUPAC:* {nama_iupac}")
         st.write(f"*Nama Trivial:* {nama_trivial}")
 
