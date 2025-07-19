@@ -126,7 +126,7 @@ def identifikasi():
             background-size: cover;
             position:fixed;
             inset:0;
-            filter:blur(5px);
+            filter:blur(2px);
         }}        
         </style>
         <div class="blurimg"></div>
