@@ -95,7 +95,7 @@ def identifikasi():
         f"""
         <style>
         .stApp {{
-            background-image: url("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/WhatsApp%20Image%202025-07-19%20at%2013.17.34_bfbfabba.jpg");
+            background-image: url("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/bg2.jpg");
             background-attachment: fixed;
             background-size: contain;
         }}
