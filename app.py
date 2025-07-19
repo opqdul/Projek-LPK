@@ -7,7 +7,10 @@ gugus_fungsi_kamus = {
     'CO': 'Keton',
     'OH': 'Alkohol',
     'NH2': 'Amina',
-    'COO': 'Ester',
+    'COO': 'Ester'    
+}
+
+ikatan = {
     'CHC': 'Alkuna',
     'CH2': 'Alkena',
     'CH':'Alkana'
@@ -75,11 +78,14 @@ def identifikasi_gugus_fungsi(rumus):
     hasil = []
     for gugus, nama in gugus_fungsi_kamus.items():
         if gugus in rumus:
-            return nama
             hasil.append(nama)
-    return "Tidak teridentifikasi"
     return hasil if hasil else ['Tidak teridentifikasi']
 
+def identifikasi_ikatan(rumus):
+    for gugus, nama in gugus_fungsi_kamus.items():
+       if gugus in rumus:
+           return nama
+    return "Tidak teridentifikasi"
 
 
 # Judul
@@ -94,6 +100,9 @@ def identifikasi():
         rumus = input_rumus.replace("-", "").replace("=", "").replace("≡", "")
 
         hasil = identifikasi_gugus_fungsi(rumus)
+        ikatan = identifikasi_ikatan(rumus)
+
+        hasil.append(ikatan)
 
         nama_iupac = "-"
         nama_trivial = "-"
