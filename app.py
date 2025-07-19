@@ -92,14 +92,15 @@ def identifikasi():
     st.markdown(
         f"""
         <style>
-        .stApp {{
+        .blurimg {{
             background-image: url("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/bg2.jpg");
             background-size: cover;
-        }}
-        .stVerticalBlock{{
-            background:white
-        }}
+            position:fixed;
+            inset:0;
+            filter:blur(9px);
+        }}        
         </style>
+        <div class="blurimg"></div>
         """,
         unsafe_allow_html=True
     )
