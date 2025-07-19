@@ -34,7 +34,7 @@ kamus_nama_senyawa = {
     'CH3CCH': {'iupac': 'Propuna', 'trivial': '-'},
     'CH3CH2CCH': {'iupac': 'Butuna', 'trivial': '-'},
     'CH3CCCH3': {'iupac': 'Butuna', 'trivial': '-'},
-    'CH4': {'iupac': 'Metana', 'trivial': '-','gambar':'metana.jpg',"golongan":"Alkana"},
+    'CH4': {'iupac': 'Metana', 'trivial': '-','gambar':'metana.jpg',"golongan":"Alkana","rumus_umum":"xxx"},
     'CH3CH3': {'iupac': 'Etana', 'trivial': '-','gambar':'etana.jpg'},
     'CH3CH2CH3': {'iupac': 'Propana', 'trivial': '-','gambar':'propana.jpg'},
     'CH3CH2CH2CH3': {'iupac': 'Butana', 'trivial': '-'},
