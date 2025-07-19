@@ -207,7 +207,8 @@ def identifikasi():
             st.write(f"*Rumus Distandarisasi:* {rumus}")
             if rumus_umum != "-":
                 st.write(f"*Rumus Umum:* {rumus_umum}")
-            
+            if golongan != "-":
+                st.write(f"*Golongan Senyawa:* {', '.join(hasil)}")
             st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
             st.write(f"*Nama IUPAC:* {nama_iupac}")
             st.write(f"*Nama Trivial:* {nama_trivial}")
