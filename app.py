@@ -115,8 +115,16 @@ def tentang():
         unsafe_allow_html=True
     )
     st.title("Isi tentang")
-    st.markdown("""
-    Website ini dibuat dengan tujuan utama untuk memudahkan pelajar dan mahasiswa dalam memahami serta mengklasifikasikan gugus fungsi dalam senyawa organik. 
+    st.markdown(f"""
+    <style>
+    p {{
+      fontSize: 16px;
+      color: white;
+    }}
+    </style>
+    <div>
+    <p>
+     Website ini dibuat dengan tujuan utama untuk memudahkan pelajar dan mahasiswa dalam memahami serta mengklasifikasikan gugus fungsi dalam senyawa organik. 
     
     Dalam pembelajaran kimia organik, pengenalan struktur senyawa dan pengklasifikasian gugus fungsinya seringkali menjadi tantangan, terutama bagi pemula. Oleh karena itu, aplikasi ini hadir sebagai media interaktif yang dapat membantu pengguna mengidentifikasi berbagai gugus fungsi seperti alkohol, eter, aldehid, keton, asam karboksilat, dan lain-lain secara lebih mudah dan cepat.
 
@@ -128,7 +136,9 @@ def tentang():
 
     
     Secara keseluruhan, web ini dibuat sebagai alat bantu belajar yang praktis dan edukatif, yang dapat diakses kapan saja dan di mana saja. Dengan memanfaatkan teknologi digital, aplikasi ini bertujuan untuk mendekatkan konsep kimia organik kepada pengguna secara visual, sistematis, dan menyenangkan.
-""")
+    </p>
+    </div>
+    """)
 
     
 
