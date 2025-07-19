@@ -102,19 +102,20 @@ def tentang():
     st.markdown(
         f"""
         <style>
-        .blurimg {{
-            background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
-            background-size: cover;
-            position:fixed;
-            inset:0;
-            filter:blur(4px);
-        }}        
+            .blurimg {{
+                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
+                background-size: cover;
+                position: fixed;
+                inset: 0;
+                filter: blur(4px);
+                background-color: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
+            }}
         </style>
         <div class="blurimg"></div>
         """,
         unsafe_allow_html=True
     )
-    st.title("Isi tentang")
+    st.title("Tentang Aplikasi")
     st.markdown(
     f"""
     <style>
@@ -167,13 +168,14 @@ def identifikasi():
     st.markdown(
         f"""
         <style>
-        .blurimg {{
-            background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
-            background-size: cover;
-            position:fixed;
-            inset:0;
-            filter:blur(4px);
-        }}        
+           .blurimg {{
+                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
+                background-size: cover;
+                position: fixed;
+                inset: 0;
+                filter: blur(4px);
+                background-color: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
+            }} 
         </style>
         <div class="blurimg"></div>
         """,
