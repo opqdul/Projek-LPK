@@ -98,7 +98,6 @@ def identifikasi():
             background-image: url("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/WhatsApp%20Image%202025-07-19%20at%2013.17.34_bfbfabba.jpg");
             background-attachment: fixed;
             background-size: contain;
-            transform:rotate(90deg);
         }}
         </style>
         """,
