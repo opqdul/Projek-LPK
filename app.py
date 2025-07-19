@@ -140,6 +140,8 @@ def identifikasi():
         st.markdown("### 🔍 Hasil Identifikasi")
         st.write(f"*Rumus Diberikan:* {input_rumus}")
         st.write(f"*Rumus Distandarisasi:* {rumus}")
+        if gambar:
+            st.image(f"https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/{gambar}", width=250)
         st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
         st.write(f"*Jenis Hidrokarbon:* {ikatan}")
         st.write(f"*Nama IUPAC:* {nama_iupac}")
