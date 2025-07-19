@@ -141,7 +141,7 @@ def identifikasi():
         if gambar:
             st.image(f"https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/{gambar}", width=250)
             
-        st.markdown(f":white-background[*Rumus Diberikan:* {input_rumus}]")
+        st.markdown(f":blue-background[*Rumus Diberikan:* {input_rumus}]")
         st.markdown(f":white-background[*Rumus Distandarisasi:* {rumus}]")
         st.markdown(f":white-background[*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}]")
         st.markdown(f":white-background[*Jenis Hidrokarbon:* {ikatan}]")
