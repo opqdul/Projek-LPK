@@ -36,7 +36,7 @@ kamus_nama_senyawa = {
     'CH3CH3CH3N': {'iupac': 'Trimetilamin', 'trivial': '', 'golongan': 'Amina tersier', 'rumus_umum': 'R3N'},
     'CH3CH2NH2': {'iupac': 'Etilamin', 'trivial': '', 'golongan': 'Amina primer', 'rumus_umum': 'R-NH2'},
     'C6H5CH2NH2': {'iupac': 'Benzilamin', 'trivial': '', 'golongan': 'Amina primer', 'rumus_umum': 'ArCH2NH2'},
-    'C6H5NH2': {'iupac': 'Anilin', 'trivial': '', 'golongan': 'Amina primer aromatik', 'rumus_umum': 'Ar-NH2'}
+    'C6H5NH2': {'iupac': 'Anilin', 'trivial': '', 'golongan': 'Amina primer aromatik', 'rumus_umum': 'Ar-NH2'}
     'CH3OH': {'iupac': 'Metanol', 'trivial': 'Alkohol metil / spiritus', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'C2H5OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil / alkohol', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'CH3CH2CH2OH': {'iupac': '1-Propanol', 'trivial': 'n-Propanol', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
@@ -48,25 +48,25 @@ kamus_nama_senyawa = {
     'C6H5CH2OH': {'iupac': 'Benzil alkohol', 'trivial': 'Benzil alkohol', 'golongan': 'Alkohol primer aromatik', 'rumus_umum': 'Ar-CH2OH'},
     'HOCH2CH2OH': {'iupac': 'Etana-1,2-diol', 'trivial': 'Glikol etilen', 'golongan': 'Alkohol diol', 'rumus_umum': 'HO-R-OH'},
     'HOCH2CH(OH)CH2OH': {'iupac': 'Propana-1,2,3-triol', 'trivial': 'Gliserol / gliserin', 'golongan': 'Alkohol triol', 'rumus_umum': 'R-(OH)3'},
-    'CH3CH(OH)CH3': {'iupac': 'Propan-2-ol', 'trivial': 'Isopropil alkohol', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'}
+    'CH3CH(OH)CH3': {'iupac': 'Propan-2-ol', 'trivial': 'Isopropil alkohol', 'golongan': 'Alkohol sekunder', 'rumus_umum':'R-OH'}
     'CH3COCH3': {'iupac': 'Propanon', 'trivial': 'Aseton', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
     'CH3COCH2CH3': {'iupac': 'Butanon', 'trivial': 'Metil etil keton', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
     'CH3COCH2CH2CH3': {'iupac': '2-Pentanon', 'trivial': 'Metil propil keton', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
     'CH3COCH2CH2CH2CH3': {'iupac': '2-Heksanon', 'trivial': 'Metil butil keton', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
     'C6H5COCH3': {'iupac': '1-Fenil-etanon', 'trivial': 'Asetofenon', 'golongan': 'Keton aromatik', 'rumus_umum': 'Ar-CO-R'},
-    'C6H5COC6H5': {'iupac': '1,2-Difenil-etanon', 'trivial': 'Benzofenon', 'golongan': 'Keton aromatik', 'rumus_umum': 'Ar-CO-Ar'},
+    'C6H5COC6H5': {'iupac': '1,2-Difenil-etanon', 'trivial': 'Benzofenon', 'golongan': 'Keton aromatik', 'rumus_umum':'Ar-CO-Ar'},
     'HCHO': {'iupac': 'Metanal', 'trivial': 'Formaldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3CHO': {'iupac': 'Etanal', 'trivial': 'Asetaldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3CH2CHO': {'iupac': 'Propanal', 'trivial': 'Propionaldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3(CH2)2CHO': {'iupac': 'Butanal', 'trivial': 'Butiraldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3(CH2)3CHO': {'iupac': 'Pentanal', 'trivial': 'Valeraldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
-    'C6H5CHO': {'iupac': 'Benzena karbaldehida', 'trivial': 'Benzaldehida', 'golongan': 'Aldehid aromatik', 'rumus_umum': 'Ar-CHO'}
+    'C6H5CHO': {'iupac': 'Benzena karbaldehida', 'trivial': 'Benzaldehida', 'golongan': 'Aldehid aromatik', 'rumus_umum':'Ar-CHO'}
     'HCOOH': {'iupac': 'Asam metanoat', 'trivial': 'Asam format', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3COOH': {'iupac': 'Asam etanoat', 'trivial': 'Asam asetat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3CH2COOH': {'iupac': 'Asam propanoat', 'trivial': 'Asam propionat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3(CH2)2COOH': {'iupac': 'Asam butanoat', 'trivial': 'Asam butirat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3(CH2)3COOH': {'iupac': 'Asam pentanoat', 'trivial': 'Asam valerianat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
-    'C6H5COOH': {'iupac': 'Asam benzoat', 'trivial': 'Asam benzoat', 'golongan': 'Asam karboksilat aromatik', 'rumus_umum': 'Ar-COOH'}
+    'C6H5COOH': {'iupac': 'Asam benzoat', 'trivial': 'Asam benzoat', 'golongan': 'Asam karboksilat aromatik', 'rumus_umum':'Ar-COOH'}
     'CH4': {'iupac': 'Metana', 'trivial': '-','gambar':'metana.jpg'"golongan":,"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH3': {'iupac': 'Etana', 'trivial': '-','gambar':'etana.jpg'"golongan":,"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH2CH3': {'iupac': 'Propana', 'trivial': '-','gambar':'propana.jpg'"golongan":,"Alkana","rumus_umum":"CnH2n+2"},
