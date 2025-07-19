@@ -27,7 +27,7 @@ kamus_nama_senyawa = {
     'CH3CH2CH2COOCH3': {'iupac': 'Metil butanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3CH2CH2COOC2H5': {'iupac': 'Etil butanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3COOCH2CH2CH3': {'iupac': 'Propanil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3COOCH(CH3)2': {'iupac': 'Isopropil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
+    'CH3COOCH(CH3)2': {'iupac': 'Isopropil etanoat', 'trivial': '','gambar':'0jtr3m8o.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'C6H5CH2COOCH3': {'iupac': 'Benzil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3CH2CH2COOCH2CH2CH3': {'iupac': 'Propanil butanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3COOCH(CH2CH3)CH3': {'iupac': 'Oktil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum':'R-COO-R'},
