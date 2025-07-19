@@ -48,7 +48,7 @@ kamus_nama_senyawa = {
     'CH3CH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonana', 'trivial': '-'},
     'CH3CH2CH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekana', 'trivial': '-'},
     'CH2CH2': {'iupac': 'Etena', 'trivial': 'Etilena'},
-    'CH2=CHCH3': {'iupac': 'Propena', 'trivial': 'Propilena'},
+    'CH2CHCH3': {'iupac': 'Propena', 'trivial': 'Propilena'},
     'CH2CHCH2CH3': {'iupac': 'Butena', 'trivial': '-'},
     'CH2CHCH2CH2CH3': {'iupac': 'Pentena', 'trivial': '-'},
     'CH2CHCH2CH2CH2CH3': {'iupac': 'Heksena', 'trivial': '-'},
@@ -77,6 +77,7 @@ def identifikasi_gugus_fungsi(rumus):
         if gugus in rumus:
             return nama
             hasil.append(nama)
+    return "Tidak teridentifikasi"
     return hasil if hasil else ['Tidak teridentifikasi']
 
 
