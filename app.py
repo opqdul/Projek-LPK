@@ -146,8 +146,6 @@ def identifikasi():
         st.write(f"*Jenis Hidrokarbon:* {ikatan}")
         st.write(f"*Nama IUPAC:* {nama_iupac}")
         st.write(f"*Nama Trivial:* {nama_trivial}")
-        if gambar:
-            st.image(f"https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/{gambar}", width=250)
 
 
 option = st.sidebar.radio(
