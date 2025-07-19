@@ -107,7 +107,7 @@ def tentang():
             background-size: cover;
             position:fixed;
             inset:0;
-            filter:blur(2px);
+            filter:blur(4px);
         }}        
         </style>
         <div class="blurimg"></div>
@@ -172,7 +172,7 @@ def identifikasi():
             background-size: cover;
             position:fixed;
             inset:0;
-            filter:blur(2px);
+            filter:blur(4px);
         }}        
         </style>
         <div class="blurimg"></div>
