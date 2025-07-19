@@ -209,7 +209,7 @@ option = st.sidebar.radio(
     "Menu:",
     ("Indentifikasi Gugus Fungsi", "Tentang Aplikasi")
 )
-st.write(option)
+st.write(option == "Tentang Aplikasi")
 if option == "Indentifikasi Gugus Fungsi":
     identifikasi()
 elif option == "Tentang Aplikasi":
