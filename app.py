@@ -24,7 +24,6 @@ kamus_nama_senyawa = {
     'CH3CH2OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil'},
     'HCOH': {'iupac": 'Metanal', ' 'trivial': 'Formaldehid'},
     'CH3CHO': {'iupac': 'Etanal', 'trivial': 'Asetaldehida,
-h  'CH3COCH3': {'iupac': 'Propanon', 'trivial': 'Aseton'},
     'CH3NH2': {'iupac': 'Metilamina', 'trivial': '-'},
     'CH2CH2': {'iupac': 'Etena', 'trivial': 'Etilena'},
     'CH3CHCH2': {'iupac': 'Propena', 'trivial': 'Propilena'},
