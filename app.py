@@ -34,7 +34,7 @@ kamus_nama_senyawa = {
     'CH3CCH': {'iupac': 'Propuna', 'trivial': '-'},
     'CH3CH2CCH': {'iupac': 'Butuna', 'trivial': '-'},
     'CH3CCCH3': {'iupac': 'Butuna', 'trivial': '-'},
-    'CH3': {'iupac': 'Metana', 'trivial': '-'},
+    'CH3': {'iupac': 'Metana', 'trivial': '-','image':'metana.jpg'},
     'CH3CH3': {'iupac': 'Etana', 'trivial': '-'},
     'CH3CH2CH3': {'iupac': 'Propana', 'trivial': '-'},
     'CH3CH2CH2CH3': {'iupac': 'Butana', 'trivial': '-'},
@@ -117,10 +117,12 @@ def identifikasi():
 
         nama_iupac = "-"
         nama_trivial = "-"
+        gambar = None
 
         if rumus in kamus_nama_senyawa:
             nama_iupac = kamus_nama_senyawa[rumus]['iupac']
             nama_trivial = kamus_nama_senyawa[rumus]['trivial']
+            gambar = kamus_nama_senyawa[rumus]['gambar']
         else:
             # Deteksi otomatis nama IUPAC sederhana
             if 'Asam Karboksilat' in hasil:
@@ -142,6 +144,8 @@ def identifikasi():
         st.write(f"*Jenis Hidrokarbon:* {ikatan}")
         st.write(f"*Nama IUPAC:* {nama_iupac}")
         st.write(f"*Nama Trivial:* {nama_trivial}")
+        if gambar:
+            st.image("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/{gambar}", width=250)
 
 
 option = st.sidebar.radio(
