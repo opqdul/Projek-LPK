@@ -96,6 +96,9 @@ def identifikasi():
             background-image: url("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/bg2.jpg");
             background-size: cover;
         }}
+        .stMarkdownContainer{
+            background:white
+        }
         </style>
         """,
         unsafe_allow_html=True
