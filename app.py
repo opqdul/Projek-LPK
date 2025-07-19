@@ -122,7 +122,7 @@ def identifikasi():
         f"""
         <style>
         .blurimg {{
-            background-image: url("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/bg2.jpg");
+            background-image: url("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/background.jpg");
             background-size: cover;
             position:fixed;
             inset:0;
