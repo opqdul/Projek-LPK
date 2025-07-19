@@ -214,6 +214,6 @@ st.write(option)
 st.write(option == "Tentang Aplikasi")
 if option == "Indentifikasi Gugus Fungsi":
     identifikasi()
-elif option == "Tentang Aplikasi":
+if option == "Tentang Aplikasi":
     st.write("Harusnya kesini")
     tentang()
