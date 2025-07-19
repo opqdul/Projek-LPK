@@ -100,9 +100,7 @@ def identifikasi():
         rumus = input_rumus.replace("-", "").replace("=", "").replace("≡", "")
 
         hasil = identifikasi_gugus_fungsi(rumus)
-        ikatan = identifikasi_ikatan(rumus)
-
-        hasil.append(ikatan)
+        ikatan = identifikasi_ikatan(rumus)        
 
         nama_iupac = "-"
         nama_trivial = "-"
@@ -128,7 +126,7 @@ def identifikasi():
         st.write(f"*Rumus Diberikan:* {input_rumus}")
         st.write(f"*Rumus Distandarisasi:* {rumus}")
         st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
-        st.write(f"*Jenis Hidrokarbon:* {hasil}")
+        st.write(f"*Jenis Hidrokarbon:* {ikatan}")
         st.write(f"*Nama IUPAC:* {nama_iupac}")
         st.write(f"*Nama Trivial:* {nama_trivial}")
 
