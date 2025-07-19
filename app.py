@@ -108,7 +108,7 @@ def tentang():
                 position: fixed;
                 inset: 0;
                 filter: blur(4px);
-                background-color: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
+                background-color: rgba(0, 0, 0, 0.8); /* Transparent black overlay */
             }}
         </style>
         <div class="blurimg"></div>
@@ -174,7 +174,7 @@ def identifikasi():
                 position: fixed;
                 inset: 0;
                 filter: blur(4px);
-                background-color: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
+                background-color: rgba(0, 0, 0, 0.8); /* Transparent black overlay */
             }} 
         </style>
         <div class="blurimg"></div>
