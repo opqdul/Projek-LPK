@@ -80,7 +80,7 @@ def identifikasi_gugus_fungsi(rumus):
 
 def identifikasi_ikatan(rumus):
     for gugus, nama in ikatan.items():
-        if rumus.index(gugus) == 0:
+        if rumus.find(gugus) == 0:
            return nama        
     return "Tidak teridentifikasi"
 
