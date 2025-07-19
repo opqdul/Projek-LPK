@@ -142,7 +142,7 @@ def identifikasi():
         f"""
         <style>
         .blurimg {{
-            background-image: url("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/background.jpg");
+            background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
             background-size: cover;
             position:fixed;
             inset:0;
@@ -200,7 +200,7 @@ def identifikasi():
         st.markdown("### 🔍 Hasil Identifikasi")
         
         if gambar:
-            st.image(f"https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/{gambar}", width=250)
+            st.image(f"https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/{gambar}", width=250)
             
         with st.container(border=True):
             st.write(f"*Rumus Diberikan:* {input_rumus}")
