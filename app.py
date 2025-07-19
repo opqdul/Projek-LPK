@@ -96,8 +96,7 @@ def identifikasi():
         <style>
         .stApp {{
             background-image: url("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/bg2.jpg");
-            background-attachment: fixed;
-            background-size: contain;
+            background-size: cover;
         }}
         </style>
         """,
