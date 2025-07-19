@@ -122,7 +122,8 @@ def identifikasi():
         if rumus in kamus_nama_senyawa:
             nama_iupac = kamus_nama_senyawa[rumus]['iupac']
             nama_trivial = kamus_nama_senyawa[rumus]['trivial']
-            gambar = kamus_nama_senyawa[rumus]['gambar']
+            if "gambar" in kamus_nama_senyawa[rumus]:
+                gambar = kamus_nama_senyawa[rumus]['gambar']
         else:
             # Deteksi otomatis nama IUPAC sederhana
             if 'Asam Karboksilat' in hasil:
