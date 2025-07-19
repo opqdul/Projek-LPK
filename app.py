@@ -8,9 +8,9 @@ gugus_fungsi_kamus = {
     'OH': 'Alkohol',
     'NH2': 'Amina',
     'COO': 'Ester',
-    'C-C':'Alkana',
-    'C=C': 'Alkena',
-    'C≡C': 'Alkuna'
+    'CHC': 'Alkuna',
+    'CH2': 'Alkena',
+    'CH':'Alkana'
 }
 
 # Kamus nama senyawa lengkap (tanpa strip)
@@ -47,24 +47,24 @@ kamus_nama_senyawa = {
     'CH3CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Oktana', 'trivial': '-'},
     'CH3CH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonana', 'trivial': '-'},
     'CH3CH2CH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekana', 'trivial': '-'},
-    'CH2=CH2': {'iupac': 'Etena', 'trivial': 'Etilena'},
+    'CH2CH2': {'iupac': 'Etena', 'trivial': 'Etilena'},
     'CH2=CHCH3': {'iupac': 'Propena', 'trivial': 'Propilena'},
-    'CH2=CHCH2CH3': {'iupac': 'Butena', 'trivial': '-'},
-    'CH2=CHCH2CH2CH3': {'iupac': 'Pentena', 'trivial': '-'},
-    'CH2=CHCH2CH2CH2CH3': {'iupac': 'Heksena', 'trivial': '-'},
-    'CH2=CHCH2CH2CH2CH2CH3': {'iupac': 'Heptena', 'trivial': '-'},
-    'CH2=CHCH2CH2CH2CH2CH2CH3': {'iupac': 'Oktena', 'trivial': '-'},
-    'CH2=CHCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonena', 'trivial': '-'},
-    'CH2=CHCH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekena', 'trivial': '-'},
-    'CH≡CH': {'iupac': 'Etuna', 'trivial': 'Asetilena'},
-    'CH≡CCH3': {'iupac': 'Propuna', 'trivial': '-'},
-    'CH≡CCH2CH3': {'iupac': 'Butuna', 'trivial': '-'},
-    'CH≡CCH2CH2CH3': {'iupac': 'Pentuna', 'trivial': '-'},
-    'CH≡CCH2CH2CH2CH3': {'iupac': 'Heksuna', 'trivial': '-'},
-    'CH≡CCH2CH2CH2CH2CH3': {'iupac': 'Heptuna', 'trivial': '-'},
-    'CH≡CCH2CH2CH2CH2CH2CH3': {'iupac': 'Oktena', 'trivial': '-'},
-    'CH≡CCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonuna', 'trivial': '-'},
-    'CH≡CCH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekuna', 'trivial': '-'},
+    'CH2CHCH2CH3': {'iupac': 'Butena', 'trivial': '-'},
+    'CH2CHCH2CH2CH3': {'iupac': 'Pentena', 'trivial': '-'},
+    'CH2CHCH2CH2CH2CH3': {'iupac': 'Heksena', 'trivial': '-'},
+    'CH2CHCH2CH2CH2CH2CH3': {'iupac': 'Heptena', 'trivial': '-'},
+    'CH2CHCH2CH2CH2CH2CH2CH3': {'iupac': 'Oktena', 'trivial': '-'},
+    'CH2CHCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonena', 'trivial': '-'},
+    'CH2CHCH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekena', 'trivial': '-'},
+    'CHCH': {'iupac': 'Etuna', 'trivial': 'Asetilena'},
+    'CHCCH3': {'iupac': 'Propuna', 'trivial': '-'},
+    'CHCCH2CH3': {'iupac': 'Butuna', 'trivial': '-'},
+    'CHCCH2CH2CH3': {'iupac': 'Pentuna', 'trivial': '-'},
+    'CHCCH2CH2CH2CH3': {'iupac': 'Heksuna', 'trivial': '-'},
+    'CHCCH2CH2CH2CH2CH3': {'iupac': 'Heptuna', 'trivial': '-'},
+    'CHCCH2CH2CH2CH2CH2CH3': {'iupac': 'Oktena', 'trivial': '-'},
+    'CHCCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonuna', 'trivial': '-'},
+    'CHCCH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekuna', 'trivial': '-'},
 }
 
 def tentang():
@@ -75,6 +75,7 @@ def identifikasi_gugus_fungsi(rumus):
     hasil = []
     for gugus, nama in gugus_fungsi_kamus.items():
         if gugus in rumus:
+            return nama
             hasil.append(nama)
     return hasil if hasil else ['Tidak teridentifikasi']
 
