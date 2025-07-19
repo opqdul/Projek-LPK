@@ -99,7 +99,7 @@ kamus_nama_senyawa = {
 
 
 def tentang():
-        st.markdown(
+    st.markdown(
         f"""
         <style>
         .blurimg {{
