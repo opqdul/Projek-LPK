@@ -150,6 +150,8 @@ def identifikasi():
 
         nama_iupac = "-"
         nama_trivial = "-"
+        golongan = "-"
+        rumus_umum = "-"
         gambar = None
 
         if rumus in kamus_nama_senyawa:
@@ -157,6 +159,10 @@ def identifikasi():
             nama_trivial = kamus_nama_senyawa[rumus]['trivial']
             if "gambar" in kamus_nama_senyawa[rumus]:
                 gambar = kamus_nama_senyawa[rumus]['gambar']
+            if "golongan" in kamus_nama_senyawa[rumus]:
+                golongan = kamus_nama_senyawa[rumus]['golongan']
+            if "rumus_umum" in kamus_nama_senyawa[rumus]:
+                rumus_umum = kamus_nama_senyawa[rumus]['rumus_umum']
         else:
             # Deteksi otomatis nama IUPAC sederhana
             if 'Asam Karboksilat' in hasil:
@@ -179,8 +185,11 @@ def identifikasi():
         with st.container(border=True):
             st.write(f"*Rumus Diberikan:* {input_rumus}")
             st.write(f"*Rumus Distandarisasi:* {rumus}")
+            if rumus_umum not "-":
+                st.write(f"*Rumus Umum:* {rumus_umum}")
+            
             st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
-            st.write(f"*Jenis Hidrokarbon:* {ikatan}")
+            st.write(f"*Jenis Hidrokarbon:* {golongan}")
             st.write(f"*Nama IUPAC:* {nama_iupac}")
             st.write(f"*Nama Trivial:* {nama_trivial}")
 
