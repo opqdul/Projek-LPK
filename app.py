@@ -214,7 +214,7 @@ def identifikasi():
             if golongan != "-":
                 st.write(f"*Golongan Senyawa:* {golongan}")
                 
-            st.write(f"*aaaaGugus Fungsi Terdeteksi:* {', '.join(hasil)}")
+            st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
             st.write(f"*Nama IUPAC:* {nama_iupac}")
             st.write(f"*Nama Trivial:* {nama_trivial}")
 
