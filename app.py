@@ -67,9 +67,9 @@ kamus_nama_senyawa = {
     'CH3(CH2)2COOH': {'iupac': 'Asam butanoat', 'trivial': 'Asam butirat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3(CH2)3COOH': {'iupac': 'Asam pentanoat', 'trivial': 'Asam valerianat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'C6H5COOH': {'iupac': 'Asam benzoat', 'trivial': 'Asam benzoat', 'golongan': 'Asam karboksilat aromatik', 'rumus_umum':'Ar-COOH'},
-    'CH4': {'iupac': 'Metana', 'trivial': '-','gambar':'metana.jpg'"golongan":,"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH3': {'iupac': 'Etana', 'trivial': '-','gambar':'etana.jpg'"golongan":,"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH3': {'iupac': 'Propana', 'trivial': '-','gambar':'propana.jpg'"golongan":,"Alkana","rumus_umum":"CnH2n+2"},
+    'CH4': {'iupac': 'Metana', 'trivial': '-','gambar':'metana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
+    'CH3CH3': {'iupac': 'Etana', 'trivial': '-','gambar':'etana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
+    'CH3CH2CH3': {'iupac': 'Propana', 'trivial': '-','gambar':'propana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH2CH2CH3': {'iupac': 'Butana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH2CH2CH2CH3': {'iupac': 'Pentana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH2CH2CH2CH2CH3': {'iupac': 'Heksana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
@@ -96,6 +96,7 @@ kamus_nama_senyawa = {
     'CHCCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonuna', 'trivial': '-',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
     'CHCCH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekuna', 'trivial': '-',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
 }
+
 
 def tentang():
     st.title("Isi tentang")
