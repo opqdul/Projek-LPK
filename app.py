@@ -214,6 +214,6 @@ st.write(option)
 st.write(option.find("Tentang"))
 if option == "Indentifikasi Gugus Fungsi":
     identifikasi()
-if option.find("Tentang Aplikasi") == 0:
+if option.find("Tentang") == 0:
     st.write("Harusnya kesini")
     tentang()
