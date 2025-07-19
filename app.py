@@ -141,12 +141,13 @@ def identifikasi():
         if gambar:
             st.image(f"https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/{gambar}", width=250)
             
-        st.markdown(f":blue-background[*Rumus Diberikan:* {input_rumus}]")
-        st.markdown(f":white-background[*Rumus Distandarisasi:* {rumus}]")
-        st.markdown(f":white-background[*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}]")
-        st.markdown(f":white-background[*Jenis Hidrokarbon:* {ikatan}]")
-        st.markdown(f":white-background[*Nama IUPAC:* {nama_iupac}]")
-        st.markdown(f":white-background[*Nama Trivial:* {nama_trivial}]")
+        with st.container(border=True):
+            st.write(f"*Rumus Diberikan:* {input_rumus}")
+            st.write(f"*Rumus Distandarisasi:* {rumus}")
+            st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
+            st.write(f"*Jenis Hidrokarbon:* {ikatan}")
+            st.write(f"*Nama IUPAC:* {nama_iupac}")
+            st.write(f"*Nama Trivial:* {nama_trivial}")
 
 
 option = st.sidebar.radio(
