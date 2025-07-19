@@ -185,7 +185,7 @@ def identifikasi():
         with st.container(border=True):
             st.write(f"*Rumus Diberikan:* {input_rumus}")
             st.write(f"*Rumus Distandarisasi:* {rumus}")
-            if rumus_umum not "-":
+            if rumus_umum != "-":
                 st.write(f"*Rumus Umum:* {rumus_umum}")
             
             st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
