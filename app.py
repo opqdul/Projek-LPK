@@ -209,5 +209,8 @@ option = st.sidebar.radio(
     "Menu:",
     ("Indentifikasi Gugus Fungsi", "Tentang Aplikasi")
 )
-
-
+st.write(option)
+if option == "Indentifikasi Gugus Fungsi":
+    identifikasi()
+elif option == "Tentang Aplikasi":
+    tentang()
