@@ -100,6 +100,17 @@ kamus_nama_senyawa = {
 
 def tentang():
     st.title("Isi tentang")
+    st.write"""Aplikasi web ini dibuat dengan tujuan utama untuk *memudahkan pelajar dan mahasiswa dalam memahami serta mengklasifikasikan gugus fungsi dalam senyawa organik*. Dalam pembelajaran kimia organik, pengenalan struktur senyawa dan pengklasifikasian gugus fungsinya seringkali menjadi tantangan, terutama bagi pemula. Oleh karena itu, aplikasi ini hadir sebagai media interaktif yang dapat membantu pengguna mengidentifikasi berbagai gugus fungsi seperti alkohol, eter, aldehid, keton, asam karboksilat, dan lain-lain secara lebih mudah dan cepat.
+    Selain itu, aplikasi ini juga dirancang untuk *membantu pengguna dalam mengetahui nama senyawa berdasarkan aturan penamaan IUPAC maupun nama trivial*. Penamaan senyawa organik merupakan bagian penting dalam komunikasi kimia, dan memahami aturan penamaan dapat meningkatkan pemahaman terhadap struktur serta reaktivitas senyawa tersebut.
+    Keunggulan dari aplikasi ini adalah adanya *fitur input atau visualisasi struktur senyawa, baik secara manual melalui antarmuka interaktif maupun melalui gambar (jika didukung). Dengan fitur ini, pengguna tidak hanya membaca teks, tetapi juga dapat melihat langsung bentuk struktur senyawa yang dimaksud, sehingga **proses identifikasi dan penamaan menjadi lebih intuitif dan efisien*.
+    Secara keseluruhan, web ini dibuat sebagai *alat bantu belajar yang praktis dan edukatif*, yang dapat diakses kapan saja dan di mana saja. Dengan memanfaatkan teknologi digital, aplikasi ini bertujuan untuk mendekatkan konsep kimia organik kepada pengguna secara visual, sistematis, dan menyenangkan.
+"""
+
+    
+
+
+
+
 
 # Fungsi identifikasi gugus fungsi
 def identifikasi_gugus_fungsi(rumus):
