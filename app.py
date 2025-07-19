@@ -99,6 +99,21 @@ kamus_nama_senyawa = {
 
 
 def tentang():
+        st.markdown(
+        f"""
+        <style>
+        .blurimg {{
+            background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
+            background-size: cover;
+            position:fixed;
+            inset:0;
+            filter:blur(2px);
+        }}        
+        </style>
+        <div class="blurimg"></div>
+        """,
+        unsafe_allow_html=True
+    )
     st.title("Isi tentang")
     st.markdown("""
     Website ini dibuat dengan tujuan utama untuk memudahkan pelajar dan mahasiswa dalam memahami serta mengklasifikasikan gugus fungsi dalam senyawa organik. 
