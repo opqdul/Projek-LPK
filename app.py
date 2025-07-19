@@ -40,7 +40,6 @@ kamus_nama_senyawa = {
     'CH3CH2CH2CH3': {'iupac': 'Butana', 'trivial': '-'},
     'CH3CH2CH2CH2CH3': {'iupac': 'Pentana', 'trivial': '-'},
     'CH3CH2CH2CH2CH2CH3': {'iupac': 'Heksana', 'trivial': '-'},
-    'CH3CH3': {'iupac': 'Etana', 'trivial': '-'},
     'CH3CH2CH3': {'iupac': 'Propana', 'trivial': '-'},
     'CH3CH2CH2CH3': {'iupac': 'Butana', 'trivial': '-'},
     'CH3CH2CH2CH2CH3': {'iupac': 'Pentana', 'trivial': '-'},
