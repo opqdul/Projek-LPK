@@ -119,15 +119,9 @@ def tentang():
     f"""
     <style>
         p {{
-            font-size: 24px;
+            font-size: 18px;
+            color: white;
         }}
-        # .blurimg {{
-        #     background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
-        #     background-size: cover;
-        #     position:fixed;
-        #     inset:0;
-        #     filter:blur(2px);
-        # }}        
     </style>
     <p>
      Website ini dibuat dengan tujuan utama untuk memudahkan pelajar dan mahasiswa dalam memahami serta mengklasifikasikan gugus fungsi dalam senyawa organik. 
