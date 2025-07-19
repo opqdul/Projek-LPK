@@ -18,7 +18,7 @@ ikatan = {
 
 # Kamus nama senyawa lengkap (tanpa strip)
 kamus_nama_senyawa = {
-    'HCOOCH3':{'iupac':'Metil metanoat','trivial':'','gambar':'metanoat.png',"golongan":"Ester","rumus_umum":"R-COO-R"},
+    'HCOOCH3':{'iupac':'Metil metanoat','trivial':'Metil format','gambar':'metanoat.png',"golongan":"Ester","rumus_umum":"R-COO-R"},
     'HCOOC2H5': {'iupac': 'Etil metanoat', 'trivial': '','gambar':'etil metanoat.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3COOCH3': {'iupac': 'Metil etanoat', 'trivial': '','gambar':'metil etanoat.jpg', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3COOC2H5': {'iupac': 'Etil etanoat', 'trivial': '','gambar':'etil etanoat.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
