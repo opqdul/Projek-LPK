@@ -115,7 +115,7 @@ def tentang():
         """,
         unsafe_allow_html=True
     )
-    st.title("Tentang Aplikasi")
+    st.title("Tentang Website")
     st.markdown(
     f"""
     <style>
@@ -249,7 +249,7 @@ def identifikasi():
 
 option = st.sidebar.radio(
     "Menu:",
-    ("Indentifikasi Gugus Fungsi", "Tentang Aplikasi")
+    ("Indentifikasi Gugus Fungsi", "Tentang Website")
 )
 
 if option == "Indentifikasi Gugus Fungsi":
