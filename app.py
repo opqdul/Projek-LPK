@@ -23,7 +23,7 @@ kamus_nama_senyawa = {
     'CH3COOCH3': {'iupac': 'Metil etanoat', 'trivial': '','gambar':'metil etanoat.jpg', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3COOC2H5': {'iupac': 'Etil etanoat', 'trivial': '','gambar':'etil etanoat.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3CH2COOCH3': {'iupac': 'Metil propanoat', 'trivial': '','gambar':'tdm434bh.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3CH2COOC2H5': {'iupac': 'Etil propanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
+    'CH3CH2COOC2H5': {'iupac': 'Etil propanoat', 'trivial': '','gambar':'1a8shj38.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3CH2CH2COOCH3': {'iupac': 'Metil butanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3CH2CH2COOC2H5': {'iupac': 'Etil butanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3COOCH2CH2CH3': {'iupac': 'Propanil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
