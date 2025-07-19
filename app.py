@@ -4,7 +4,7 @@ import streamlit as st
 gugus_fungsi_kamus = {
     'COOH': 'Asam Karboksilat',
     'CHO': 'Aldehid',
-    'CO': 'Keton',
+    'COC': 'Keton',
     'OH': 'Alkohol',
     'NH2': 'Amina',
     'COO': 'Ester'    
