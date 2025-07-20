@@ -57,7 +57,7 @@ kamus_nama_senyawa = {
     'C6H5COC6H5': {'iupac': '1,2-Difenil-etanon', 'trivial': 'Benzofenon', 'golongan': 'Keton aromatik', 'rumus_umum':'Ar-CO-Ar'},
     'HCHO': {'iupac': 'Metanal', 'trivial': 'Formaldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3CHO': {'iupac': 'Etanal', 'trivial': 'Asetaldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
-    'CH3CH2CHO': {'iupac': 'Propanal', 'trivial': 'Propionaldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
+    'CH3CH2CHO': {'iupac': 'Propanal', 'trivial': 'Propionaldehida','gambar':'as.propanoat.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3(CH2)2CHO': {'iupac': 'Butanal', 'trivial': 'Butiraldehida','gambar':'butanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3(CH2)3CHO': {'iupac': 'Pentanal', 'trivial': 'Valeraldehida','gambar':'pentanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'C6H5CHO': {'iupac': 'Benzena karbaldehida', 'trivial': 'Benzaldehida','gambar':'benzenakarbaldehida.png', 'golongan': 'Aldehid aromatik', 'rumus_umum':'Ar-CHO'},
