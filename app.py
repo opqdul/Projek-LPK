@@ -43,7 +43,7 @@ kamus_nama_senyawa = {
     'CH3CHOHCH3': {'iupac': '2-Propanol', 'trivial': 'Isopropanol / alkohol gosok', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'},
     'CH3CH2CH2CH2OH': {'iupac': '1-Butanol', 'trivial': 'n-Butanol', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'CH3CH2CHOHCH3': {'iupac': '2-Butanol', 'trivial': 'sec-Butanol', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'},
-    '(CH3)2CHCH2OH': {'iupac': '2-Metil-1-propanol', 'trivial': 'Isobutanol', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
+    '(CH3)2CHCH2OH': {'iupac': '2-Metil-1-propanol', 'trivial': 'Isobutanol','gambar':'isobutanol.png', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     '(CH3)3COH': {'iupac': '2-Metil-2-propanol', 'trivial': 't-Butanol','gambar':'tbutanol.png', 'golongan': 'Alkohol tersier', 'rumus_umum': 'R-OH'},
     'C6H5CH2OH': {'iupac': 'Benzil alkohol', 'trivial': 'Benzil alkohol','gambar':'benzilakohol.png','golongan': 'Alkohol primer aromatik', 'rumus_umum': 'Ar-CH2OH'},
     'HOCH2CH2OH': {'iupac': 'Etana-1,2-diol', 'trivial': 'Glikol etilen', 'gambar':'glikoletilen.png','golongan': 'Alkohol diol', 'rumus_umum': 'HO-R-OH'},
