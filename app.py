@@ -65,7 +65,7 @@ kamus_nama_senyawa = {
     'CH3COOH': {'iupac': 'Asam etanoat', 'trivial': 'Asam asetat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3CH2COOH': {'iupac': 'Asam propanoat', 'trivial': 'Asam propionat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3(CH2)2COOH': {'iupac': 'Asam butanoat', 'trivial': 'Asam butirat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
-    'CH3(CH2)3COOH': {'iupac': 'Asam pentanoat', 'trivial': 'Asam valerianat','golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
+    'CH3(CH2)3COOH': {'iupac': 'Asam pentanoat', 'trivial': 'Asam valerianat','gambar':'as.pentanoat.png','golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'C6H5COOH': {'iupac': 'Asam benzoat', 'trivial': 'Asam benzoat','gambar':'as.benzanoat.png', 'golongan': 'Asam karboksilat aromatik', 'rumus_umum':'Ar-COOH'},
     'CH4': {'iupac': 'Metana', 'trivial': '-','gambar':'metana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH3': {'iupac': 'Etana', 'trivial': '-','gambar':'etana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
