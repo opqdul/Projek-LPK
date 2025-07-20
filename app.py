@@ -47,7 +47,7 @@ kamus_nama_senyawa = {
     '(CH3)3COH': {'iupac': '2-Metil-2-propanol', 'trivial': 't-Butanol', 'golongan': 'Alkohol tersier', 'rumus_umum': 'R-OH'},
     'C6H5CH2OH': {'iupac': 'Benzil alkohol', 'trivial': 'Benzil alkohol', 'golongan': 'Alkohol primer aromatik', 'rumus_umum': 'Ar-CH2OH'},
     'HOCH2CH2OH': {'iupac': 'Etana-1,2-diol', 'trivial': 'Glikol etilen', 'golongan': 'Alkohol diol', 'rumus_umum': 'HO-R-OH'},
-    'HOCH2CH(OH)CH2OH': {'iupac': 'Propana-1,2,3-triol', 'trivial': 'Gliserol / gliserin', 'golongan': 'Alkohol triol', 'rumus_umum': 'R-(OH)3'},
+    'HOCH2CH(OH)CH2OH': {'iupac': 'Propana-1,2,3-triol', 'trivial': 'Gliserol / gliserin', 'gambar':'gliserol.png','golongan': 'Alkohol triol', 'rumus_umum': 'R-(OH)3'},
     'CH3CH(OH)CH3': {'iupac': 'Propan-2-ol', 'trivial': 'Isopropil alkohol','gambar':'iso propil alkohol.jpg', 'golongan': 'Alkohol sekunder', 'rumus_umum':'R-OH'},
     'CH3COCH3': {'iupac': 'Propanon', 'trivial': 'Aseton', 'gambar':'propanon.png','golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
     'CH3COCH2CH3': {'iupac': 'Butanon', 'trivial': 'Metil etil keton','gambar':'butanon.jpg', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
