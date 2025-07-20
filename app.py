@@ -63,7 +63,7 @@ kamus_nama_senyawa = {
     'C6H5CHO': {'iupac': 'Benzena karbaldehida', 'trivial': 'Benzaldehida', 'golongan': 'Aldehid aromatik', 'rumus_umum':'Ar-CHO'},
     'HCOOH': {'iupac': 'Asam metanoat', 'trivial': 'Asam format', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3COOH': {'iupac': 'Asam etanoat', 'trivial': 'Asam asetat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
-    'CH3CH2COOH': {'iupac': 'Asam propanoat', 'trivial': 'Asam propionat', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
+    'CH3CH2COOH': {'iupac': 'Asam propanoat', 'trivial': 'Asam propionat','gambar':'as.propanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3(CH2)2COOH': {'iupac': 'Asam butanoat', 'trivial': 'Asam butirat','gambar':'as.butanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3(CH2)3COOH': {'iupac': 'Asam pentanoat', 'trivial': 'Asam valerianat','gambar':'as.pentanoat.png','golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'C6H5COOH': {'iupac': 'Asam benzoat', 'trivial': 'Asam benzoat','gambar':'as.benzanoat.png', 'golongan': 'Asam karboksilat aromatik', 'rumus_umum':'Ar-COOH'},
