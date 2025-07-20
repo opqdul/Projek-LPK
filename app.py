@@ -38,7 +38,7 @@ kamus_nama_senyawa = {
     'C6H5CH2NH2': {'iupac': 'Benzilamin', 'trivial': '', 'golongan': 'Amina primer', 'rumus_umum': 'ArCH2NH2'},
     'C6H5NH2': {'iupac': 'Anilin', 'trivial': '', 'golongan': 'Amina primer aromatik', 'rumus_umum': 'Ar-NH2'},
     'CH3OH': {'iupac': 'Metanol', 'trivial': 'Alkohol metil / spiritus', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
-    'C2H5OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil / alkohol', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
+    'C2H5OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil / alkohol', 'gambar':'etanol.jpg','golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'CH3CH2CH2OH': {'iupac': '1-Propanol', 'trivial': 'n-Propanol', 'gambar':'1propanol.jpg','golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'CH3CHOHCH3': {'iupac': '2-Propanol', 'trivial': 'Isopropanol / alkohol gosok','gambar':'2propanol.png', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'},
     'CH3CH2CH2CH2OH': {'iupac': '1-Butanol', 'trivial': 'n-Butanol','gambar':'1-butanol.png', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
