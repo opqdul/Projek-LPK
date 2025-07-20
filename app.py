@@ -40,7 +40,7 @@ kamus_nama_senyawa = {
     'CH3OH': {'iupac': 'Metanol', 'trivial': 'Alkohol metil / spiritus', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'C2H5OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil / alkohol', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'CH3CH2CH2OH': {'iupac': '1-Propanol', 'trivial': 'n-Propanol', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
-    'CH3CHOHCH3': {'iupac': '2-Propanol', 'trivial': 'Isopropanol / alkohol gosok', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'},
+    'CH3CHOHCH3': {'iupac': '2-Propanol', 'trivial': 'Isopropanol / alkohol gosok','gambar':'2propanol.png', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'},
     'CH3CH2CH2CH2OH': {'iupac': '1-Butanol', 'trivial': 'n-Butanol','gambar':'1-butanol.png', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'CH3CH2CHOHCH3': {'iupac': '2-Butanol', 'trivial': 'sec-Butanol','gambar':'2 butanol.png', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'},
     '(CH3)2CHCH2OH': {'iupac': '2-Metil-1-propanol', 'trivial': 'Isobutanol','gambar':'isobutanol.png', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
