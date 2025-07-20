@@ -55,7 +55,7 @@ kamus_nama_senyawa = {
     'CH3COCH2CH2CH2CH3': {'iupac': '2-Heksanon', 'trivial': 'Metil butil keton', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
     'C6H5COCH3': {'iupac': '1-Fenil-etanon', 'trivial': 'Asetofenon', 'golongan': 'Keton aromatik', 'rumus_umum': 'Ar-CO-R'},
     'C6H5COC6H5': {'iupac': '1,2-Difenil-etanon', 'trivial': 'Benzofenon', 'golongan': 'Keton aromatik', 'rumus_umum':'Ar-CO-Ar'},
-    'HCHO': {'iupac': 'Metanal', 'trivial': 'Formaldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
+    'HCHO': {'iupac': 'Metanal', 'trivial': 'Formaldehida','gambar':'metanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3CHO': {'iupac': 'Etanal', 'trivial': 'Asetaldehida','gambar':'etanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3CH2CHO': {'iupac': 'Propanal', 'trivial': 'Propionaldehida','gambar':'as.propanoat.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3(CH2)2CHO': {'iupac': 'Butanal', 'trivial': 'Butiraldehida','gambar':'butanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
