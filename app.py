@@ -61,7 +61,7 @@ kamus_nama_senyawa = {
     'CH3(CH2)2CHO': {'iupac': 'Butanal', 'trivial': 'Butiraldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'CH3(CH2)3CHO': {'iupac': 'Pentanal', 'trivial': 'Valeraldehida', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
     'C6H5CHO': {'iupac': 'Benzena karbaldehida', 'trivial': 'Benzaldehida', 'golongan': 'Aldehid aromatik', 'rumus_umum':'Ar-CHO'},
-    'HCOOH': {'iupac': 'Asam metanoat', 'trivial': 'Asam format', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
+    'HCOOH': {'iupac': 'Asam metanoat', 'trivial': 'Asam format','gambar':'as.metanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3COOH': {'iupac': 'Asam etanoat', 'trivial': 'Asam asetat','gambar':'as.etanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3CH2COOH': {'iupac': 'Asam propanoat', 'trivial': 'Asam propionat','gambar':'as.propanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
     'CH3(CH2)2COOH': {'iupac': 'Asam butanoat', 'trivial': 'Asam butirat','gambar':'as.butanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
