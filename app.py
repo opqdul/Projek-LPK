@@ -45,7 +45,7 @@ kamus_nama_senyawa = {
     'CH3CH2CHOHCH3': {'iupac': '2-Butanol', 'trivial': 'sec-Butanol', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'},
     '(CH3)2CHCH2OH': {'iupac': '2-Metil-1-propanol', 'trivial': 'Isobutanol', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     '(CH3)3COH': {'iupac': '2-Metil-2-propanol', 'trivial': 't-Butanol', 'golongan': 'Alkohol tersier', 'rumus_umum': 'R-OH'},
-    'C6H5CH2OH': {'iupac': 'Benzil alkohol', 'trivial': 'Benzil alkohol', 'golongan': 'Alkohol primer aromatik', 'rumus_umum': 'Ar-CH2OH'},
+    'C6H5CH2OH': {'iupac': 'Benzil alkohol', 'trivial': 'Benzil alkohol','gambar':'benzilakohol.png','golongan': 'Alkohol primer aromatik', 'rumus_umum': 'Ar-CH2OH'},
     'HOCH2CH2OH': {'iupac': 'Etana-1,2-diol', 'trivial': 'Glikol etilen', 'gambar':'glikoletilen.png','golongan': 'Alkohol diol', 'rumus_umum': 'HO-R-OH'},
     'HOCH2CH(OH)CH2OH': {'iupac': 'Propana-1,2,3-triol', 'trivial': 'Gliserol / gliserin', 'gambar':'gliserol.png','golongan': 'Alkohol triol', 'rumus_umum': 'R-(OH)3'},
     'CH3CH(OH)CH3': {'iupac': 'Propan-2-ol', 'trivial': 'Isopropil alkohol','gambar':'iso propil alkohol.jpg', 'golongan': 'Alkohol sekunder', 'rumus_umum':'R-OH'},
