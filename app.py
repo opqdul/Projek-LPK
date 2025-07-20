@@ -52,7 +52,7 @@ kamus_nama_senyawa = {
     'CH3COCH3': {'iupac': 'Propanon', 'trivial': 'Aseton', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
     'CH3COCH2CH3': {'iupac': 'Butanon', 'trivial': 'Metil etil keton', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
     'CH3COCH2CH2CH3': {'iupac': '2-Pentanon', 'trivial': 'Metil propil keton', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
-    'CH3COCH2CH2CH2CH3': {'iupac': '2-Heksanon', 'trivial': 'Metil butil keton', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
+    'CH3COCH2CH2CH2CH3': {'iupac': '2-Heksanon', 'trivial': 'Metil butil keton','gambar':'1 fenil etanon.png', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
     'C6H5COCH3': {'iupac': '1-Fenil-etanon', 'trivial': 'Asetofenon','gambar':'1 fenil etanon.png', 'golongan': 'Keton aromatik', 'rumus_umum': 'Ar-CO-R'},
     'C6H5COC6H5': {'iupac': '1,2-Difenil-etanon', 'trivial': 'Benzofenon', 'gambar':'1,2 difeniletanon.png','golongan': 'Keton aromatik', 'rumus_umum':'Ar-CO-Ar'},
     'HCHO': {'iupac': 'Metanal', 'trivial': 'Formaldehida','gambar':'metanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
