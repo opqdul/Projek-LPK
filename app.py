@@ -35,7 +35,7 @@ kamus_nama_senyawa = {
     'CH3CH3CH3N': {'iupac': 'Trimetilamin', 'trivial': '','gambar':'trimetilamin.png','golongan': 'Amina tersier', 'rumus_umum': 'R3N'},
     'CH3CH2NH2': {'iupac': 'Etilamin', 'trivial': '','gambar':'etilamin.png', 'golongan': 'Amina primer', 'rumus_umum': 'R-NH2'},
     'C6H5CH2NH2': {'iupac': 'Benzilamin', 'trivial': '','gambar':'benzilamin.png','golongan': 'Amina primer', 'rumus_umum': 'ArCH2NH2'},
-    'C6H5NH2': {'iupac': 'Anilin', 'trivial': '', 'golongan': 'Amina primer aromatik', 'rumus_umum': 'Ar-NH2'},
+    'C6H5NH2': {'iupac': 'Anilin', 'trivial': '','gambar':'anilin (2).png', 'golongan': 'Amina primer aromatik', 'rumus_umum': 'Ar-NH2'},
     'CH3OH': {'iupac': 'Metanol', 'trivial': 'Alkohol metil / spiritus', 'gambar':'metanol.png','golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'C2H5OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil / alkohol', 'gambar':'etanol.jpg','golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
     'CH3CH2CH2OH': {'iupac': '1-Propanol', 'trivial': 'n-Propanol', 'gambar':'1propanol.jpg','golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
