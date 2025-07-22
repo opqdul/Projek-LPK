@@ -173,7 +173,7 @@ def identifikasi():
                 position: fixed;
                 inset: 0;
                 filter: blur(4px);
-                background-color: rgba(0, 0, 0, 0.8); /* Transparent black overlay */
+                background-color: rgba(0, 0, 0, 0.8); /* Transparent white overlay */
             }} 
         </style>
         <div class="blurimg"></div>
