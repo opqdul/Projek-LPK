@@ -182,7 +182,7 @@ def identifikasi():
         unsafe_allow_html=True
     )
     
-    st.title("🧪 Identifikasi Gugus Fungsi & Penamaan Senyawa Hidrokarbon")
+    st.title("🧪 Identifikasi Gugus Fungsi & Tata Nama Senyawa Hidrokarbon")
 
     # st.image("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/WhatsApp%20Image%202025-07-19%20at%2013.17.34_bfbfabba.jpg", use_container_width=True)
 
