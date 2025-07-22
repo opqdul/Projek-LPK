@@ -71,8 +71,7 @@ kamus_nama_senyawa = {
     'CH3CH2CH3': {'iupac': 'Propana', 'trivial': '-','gambar':'propana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH2CH2CH3': {'iupac': 'Butana', 'trivial': '-','gambar':'butana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH2CH2CH2CH3': {'iupac': 'Pentana', 'trivial': '-','gambar':'pentana.png',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH2CH2CH2CH3': {'iupac': 'Heksana', 'trivial': '-','gambar':'
-heksana.png',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
+    'CH3CH2CH2CH2CH2CH3': {'iupac': 'Heksana', 'trivial': '-','gambar':,"golongan":"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH2CH2CH2CH2CH2CH3': {'iupac': 'Heptana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Oktana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
     'CH3CH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
