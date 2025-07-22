@@ -28,7 +28,7 @@ kamus_nama_senyawa = {
     'CH3CH2CH2COOC2H5': {'iupac': 'Etil butanoat', 'trivial': '','gambar':'pltsuutq.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3COOCH2CH2CH3': {'iupac': 'Propanil etanoat', 'trivial': '','gambar':'propanil etanoat.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3COOCH(CH3)2': {'iupac': 'Isopropil etanoat', 'trivial': '','gambar':'0jtr3m8o.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'C6H5CH2COOCH3': {'iupac': 'Benzil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
+    'C6H5CH2COOCH3': {'iupac': 'Benzil etanoat', 'trivial': '','gamba':'benzil etanoat.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
     'CH3COOCH(CH2CH3)CH3': {'iupac': 'Oktil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum':'R-COO-R'},
     'CH3NH2':{'iupac':'Metilamin','trivial':'','golongan':'Amina primer','rumus_umum':'R-NH2'},
     'CH3CH32NH': {'iupac': 'Dimetilamin', 'trivial': '', 'golongan': 'Amina sekunder', 'rumus_umum': 'R2NH'},
