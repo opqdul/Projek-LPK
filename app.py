@@ -83,7 +83,7 @@ kamus_nama_senyawa = {
     'CH2CHCH2CH2CH2CH3': {'iupac': 'Heksena', 'trivial': '-','gambar':'heksena.png',"golongan":"Alkena","rumus_umum":"CnH2n"},
     'CH2CHCH2CH2CH2CH2CH3': {'iupac': 'Heptena', 'trivial': '-','gambar':'heptena.png',"golongan":"Alkena","rumus_umum":"CnH2n"},
     'CH2CHCH2CH2CH2CH2CH2CH3': {'iupac': 'Oktena', 'trivial': '-','gambar':'oktena.png',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CH2CHCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonena', 'trivial': '-',"golongan":"Alkena","rumus_umum":"CnH2n"},
+    'CH2CHCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonena', 'trivial': '-','gambar':'nonena.png',"golongan":"Alkena","rumus_umum":"CnH2n"},
     'CH2CHCH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekena', 'trivial': '-',"golongan":"Alkena","rumus_umum":"CnH2n"},
     'CHCH': {'iupac': 'Etuna', 'trivial': 'Asetilena','gambar':'etuna (2).png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
     'CHCCH3': {'iupac': 'Propuna', 'trivial': '-',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
