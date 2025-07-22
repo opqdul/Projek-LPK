@@ -92,7 +92,7 @@ kamus_nama_senyawa = {
     'CHCCH2CH2CH2CH3': {'iupac': 'Heksuna', 'trivial': '-','gambar':'qgzmmmyc.png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
     'CHCCH2CH2CH2CH2CH3': {'iupac': 'Heptuna', 'trivial': '-','gambar':'heptuna.png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
     'CHCCH2CH2CH2CH2CH2CH3': {'iupac': 'Oktuna', 'trivial': '-','gambar':'oktuna.png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-    'CHCCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonuna', 'trivial': '-',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
+    'CHCCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonuna', 'trivial': '-','gambar':'nonuna.png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
     'CHCCH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekuna', 'trivial': '-','gambar':'dekuna.png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
 }
 
