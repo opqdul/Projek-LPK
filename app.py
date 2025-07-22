@@ -33,7 +33,7 @@ kamus_nama_senyawa = {
     'CH3NH2':{'iupac':'Metilamin','trivial':'','gambar':'metilamin.jpg','golongan':'Amina primer','rumus_umum':'R-NH2'},
     'CH3CH32NH': {'iupac': 'Dimetilamin', 'trivial': '','gambar':'dimetilamin.png','golongan': 'Amina sekunder', 'rumus_umum': 'R2NH'},
     'CH3CH3CH3N': {'iupac': 'Trimetilamin', 'trivial': '','gambar':'trimetilamin.png','golongan': 'Amina tersier', 'rumus_umum': 'R3N'},
-    'CH3CH2NH2': {'iupac': 'Etilamin', 'trivial': '', 'golongan': 'Amina primer', 'rumus_umum': 'R-NH2'},
+    'CH3CH2NH2': {'iupac': 'Etilamin', 'trivial': '','gambar':'etilamin.png', 'golongan': 'Amina primer', 'rumus_umum': 'R-NH2'},
     'C6H5CH2NH2': {'iupac': 'Benzilamin', 'trivial': '', 'golongan': 'Amina primer', 'rumus_umum': 'ArCH2NH2'},
     'C6H5NH2': {'iupac': 'Anilin', 'trivial': '', 'golongan': 'Amina primer aromatik', 'rumus_umum': 'Ar-NH2'},
     'CH3OH': {'iupac': 'Metanol', 'trivial': 'Alkohol metil / spiritus', 'gambar':'metanol.png','golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
