@@ -255,5 +255,4 @@ if option == "Indentifikasi Gugus Fungsi":
     identifikasi()
 if option.find("Tentang") == 0:
     tentang()
-if option.find("Dasar Teori") ==0:
-    teori()
+
