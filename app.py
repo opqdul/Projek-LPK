@@ -120,7 +120,7 @@ def tentang():
     <style>
         p {{
             font-size: 18px;
-            color: white;
+            color: red;
         }}
     </style>
     <p>
