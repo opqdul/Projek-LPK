@@ -248,10 +248,12 @@ def identifikasi():
 
 option = st.sidebar.radio(
     "Menu:",
-    ("Indentifikasi Gugus Fungsi", "Tentang Website")
+    ("Identifikasi Gugus Fungsi", "Tentang Website")
 )
 
 if option == "Indentifikasi Gugus Fungsi":
     identifikasi()
 if option.find("Tentang") == 0:
     tentang()
+if option.find("Dasar Teori") ==0:
+    teori()
