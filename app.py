@@ -252,6 +252,6 @@ option = st.sidebar.radio(
 )
 if option == "Indentifikasi Gugus Fungsi":
     identifikasi()
-if option.find("Tentang") == 0:
+elif option.find("Tentang") == 0:
     tentang()
 
