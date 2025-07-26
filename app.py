@@ -298,7 +298,7 @@ def identifikasi():
             st.write(f"*Nama IUPAC:* {nama_iupac}")
             st.write(f"*Nama Trivial:* {nama_trivial}")
 
- st.sidebar.radio(
+option = st.sidebar.radio(
     "Menu:",
     ("Identifikasi Gugus Fungsi", "Dasar Teori", "Tentang Website")
 )
