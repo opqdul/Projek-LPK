@@ -141,7 +141,7 @@ def tentang():
     unsafe_allow_html=True
     )
 
-def tentang():
+def teori():
     st.markdown(
         f"""
         <style>
