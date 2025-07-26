@@ -303,7 +303,7 @@ option = st.sidebar.radio(
     "Menu:",
     ("Identifikasi Gugus Fungsi", "Dasar Teori", "Tentang Website")
 )
-if option == "Indentifikasi Gugus Fungsi":
+if option == "Identifikasi Gugus Fungsi":
     identifikasi()
 elif option == "Dasar Teori":
     teori()
