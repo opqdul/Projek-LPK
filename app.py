@@ -102,7 +102,7 @@ def tentang():
         f"""
         <style>
             .blurimg {{
-                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
+                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/bg2.jpg");
                 background-size: cover;
                 position: fixed;
                 inset: 0;
@@ -147,7 +147,7 @@ def teori():
         f"""
         <style>
             .blurimg {{
-                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
+                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/bg2.jpg");
                 background-size: cover;
                 position: fixed;
                 inset: 0;
@@ -222,7 +222,7 @@ def identifikasi():
         f"""
         <style>
            .blurimg {{
-                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
+                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/bg2.jpg");
                 background-size: cover;
                 position: fixed;
                 inset: 0;
