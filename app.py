@@ -176,6 +176,13 @@ def tentang():
 
     Alkuna
     Rumus umum alkuna dapat ditulis sebagai berikut C,Hana, sehingga untuk harga n2, 3, 4, 5, ... dan seterusnya, rumus molekulnya berturut-turut adalah C₂H₂ (etuna), C₂H₄ (propuna), CH (butuna), CH (pentuna).....dan seterusnya. Senyawa yang terpenting dalam golongan alkuna adalah etuna (asitilena). Sifat fisika Pada temperatur ruang, alkuna yang mengandung C₂ sampai C, berupa gas, Cs sampai C, berupa cairan, sedangkan untuk Cte atau lebih berupa padatan. Dan sifat kimia alkuna mirip dengan alkena, namun alkuna lebih reaktif dari pada alkena. Pada temperatur ruang, alkuna dapat diadisi oleh Cl2, Br2, dan 12 tanpa katalisator, bereaksi dengan HCI dan H₂SO₄, dan dapat dioksidasi oleh KMnO, dan K₂Cr₂O.
+    
+    Alkohol
+    Alkohol adalah senyawaan organik yang dapat dianggap sebagai turunan dari alkana dengan penggantian satu atau lebih atom H pada alkana oleh gugus hidroksil (-OH). Berdasarkan jumlah gugus -OH yang terdapat dalam tiap molekulnya, alkohol dapat dibedakan:1. Alkohol monohidrat, yaitu alkohol yang mengandung satu gugus hidroksil;2. Alkohol dihidrat, yaitu alkohol yang mengandung dua gugus hidroksil; 3. Alkohol trihidrat, yaitu alkohol yang mengandung tiga gugus hidroksil; 4. Alkohol polihidrat, yaitu alkohol yang mengandung empat atau lebih gugus hidroksil. Berdasarkan atom karbon yang mengikat gugus -OH, maka alkohol di bedakan menjadi:
+1. Alkohol primer (1) adalah alkohol yang gugus -OH nya diikat oleh atom C primer (atom C yang berikatan dengan satu atom C yang lain).
+2. Alkohol sekunder (2") adalah alkohol yang gugus -OH nya diikat oleh atom C sekunderr (atom C yang berikatan dengan dua atom C yang lain).
+3. Alkohol tersier (3) adalah alkohol yang gugus -OH nya diikat oleh atom C tersier (atom C yang berikatan dengan tiga atom C yang lain).
+
      </p>
     """,
     unsafe_allow_html=True
