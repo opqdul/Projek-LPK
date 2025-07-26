@@ -250,7 +250,6 @@ option = st.sidebar.radio(
     "Menu:",
     ("Identifikasi Gugus Fungsi", "Tentang Website")
 )
-
 if option == "Indentifikasi Gugus Fungsi":
     identifikasi()
 if option.find("Tentang") == 0:
