@@ -512,7 +512,7 @@ def database_browser():
     
     analyzer = get_analyzer()
     
-    st.markdown("### 📚 Jelajahi Database Senyawa")
+    st.markdown("### Jelajahi Database Senyawa")
     
     # Filter options
     col1, col2 = st.columns(2)
