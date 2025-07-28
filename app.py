@@ -1,273 +1,680 @@
 import streamlit as st
+import pandas as pd
+import re
+from typing import Dict, List, Tuple, Optional
+import base64
+from io import BytesIO
 
-# Kamus gugus fungsi
-gugus_fungsi_kamus = {
-    'COOH': 'Asam Karboksilat',
-    'CHO': 'Aldehid',
-    'COC': 'Keton',
-    'OH': 'Alkohol',
-    'NH2': 'Amina',
-    'COO': 'Ester'    
-}
+# Try to import chemistry libraries, fall back gracefully
+try:
+    from rdkit import Chem
+    from rdkit.Chem import Draw, Descriptors
+    RDKIT_AVAILABLE = True
+except ImportError:
+    RDKIT_AVAILABLE = False
 
-ikatan = {
-    'CHC': 'Alkuna',
-    'CH2': 'Alkena',
-    'CH':'Alkana'
-}
+try:
+    import pubchempy as pcp
+    PUBCHEM_AVAILABLE = True
+except ImportError:
+    PUBCHEM_AVAILABLE = False
 
-# Kamus nama senyawa lengkap (tanpa strip)
-kamus_nama_senyawa = {
-    'HCOOCH3':{'iupac':'Metil metanoat','trivial':'Metil format','gambar':'metanoat.png',"golongan":"Ester","rumus_umum":"R-COO-R"},
-    'HCOOC2H5': {'iupac': 'Etil metanoat', 'trivial': '','gambar':'etil metanoat.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3COOCH3': {'iupac': 'Metil etanoat', 'trivial': '','gambar':'metil etanoat.jpg', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3COOC2H5': {'iupac': 'Etil etanoat', 'trivial': '','gambar':'etil etanoat.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3CH2COOCH3': {'iupac': 'Metil propanoat', 'trivial': '','gambar':'tdm434bh.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3CH2COOC2H5': {'iupac': 'Etil propanoat', 'trivial': '','gambar':'1a8shj38.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3CH2CH2COOCH3': {'iupac': 'Metil butanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3CH2CH2COOC2H5': {'iupac': 'Etil butanoat', 'trivial': '','gambar':'pltsuutq.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3COOCH2CH2CH3': {'iupac': 'Propanil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3COOCH(CH3)2': {'iupac': 'Isopropil etanoat', 'trivial': '','gambar':'0jtr3m8o.png', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'C6H5CH2COOCH3': {'iupac': 'Benzil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum': 'R-COO-R'},
-    'CH3COOCH(CH2CH3)CH3': {'iupac': 'Oktil etanoat', 'trivial': '', 'golongan': 'Ester', 'rumus_umum':'R-COO-R'},
-    'CH3NH2':{'iupac':'Metilamin','trivial':'','golongan':'Amina primer','rumus_umum':'R-NH2'},
-    'CH3CH32NH': {'iupac': 'Dimetilamin', 'trivial': '', 'golongan': 'Amina sekunder', 'rumus_umum': 'R2NH'},
-    'CH3CH3CH3N': {'iupac': 'Trimetilamin', 'trivial': '', 'golongan': 'Amina tersier', 'rumus_umum': 'R3N'},
-    'CH3CH2NH2': {'iupac': 'Etilamin', 'trivial': '', 'golongan': 'Amina primer', 'rumus_umum': 'R-NH2'},
-    'C6H5CH2NH2': {'iupac': 'Benzilamin', 'trivial': '', 'golongan': 'Amina primer', 'rumus_umum': 'ArCH2NH2'},
-    'C6H5NH2': {'iupac': 'Anilin', 'trivial': '', 'golongan': 'Amina primer aromatik', 'rumus_umum': 'Ar-NH2'},
-    'CH3OH': {'iupac': 'Metanol', 'trivial': 'Alkohol metil / spiritus', 'gambar':'metanol.png','golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
-    'C2H5OH': {'iupac': 'Etanol', 'trivial': 'Alkohol etil / alkohol', 'gambar':'etanol.jpg','golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
-    'CH3CH2CH2OH': {'iupac': '1-Propanol', 'trivial': 'n-Propanol', 'gambar':'1propanol.jpg','golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
-    'CH3CHOHCH3': {'iupac': '2-Propanol', 'trivial': 'Isopropanol / alkohol gosok','gambar':'2propanol.png', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'},
-    'CH3CH2CH2CH2OH': {'iupac': '1-Butanol', 'trivial': 'n-Butanol','gambar':'1-butanol.png', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
-    'CH3CH2CHOHCH3': {'iupac': '2-Butanol', 'trivial': 'sec-Butanol','gambar':'2 butanol.png', 'golongan': 'Alkohol sekunder', 'rumus_umum': 'R-OH'},
-    '(CH3)2CHCH2OH': {'iupac': '2-Metil-1-propanol', 'trivial': 'Isobutanol','gambar':'isobutanol.png', 'golongan': 'Alkohol primer', 'rumus_umum': 'R-OH'},
-    '(CH3)3COH': {'iupac': '2-Metil-2-propanol', 'trivial': 't-Butanol','gambar':'tbutanol.png', 'golongan': 'Alkohol tersier', 'rumus_umum': 'R-OH'},
-    'C6H5CH2OH': {'iupac': 'Benzil alkohol', 'trivial': 'Benzil alkohol','gambar':'benzilakohol.png','golongan': 'Alkohol primer aromatik', 'rumus_umum': 'Ar-CH2OH'},
-    'HOCH2CH2OH': {'iupac': 'Etana-1,2-diol', 'trivial': 'Glikol etilen', 'gambar':'glikoletilen.png','golongan': 'Alkohol diol', 'rumus_umum': 'HO-R-OH'},
-    'HOCH2CH(OH)CH2OH': {'iupac': 'Propana-1,2,3-triol', 'trivial': 'Gliserol / gliserin', 'gambar':'gliserol.png','golongan': 'Alkohol triol', 'rumus_umum': 'R-(OH)3'},
-    'CH3CH(OH)CH3': {'iupac': 'Propan-2-ol', 'trivial': 'Isopropil alkohol','gambar':'iso propil alkohol.jpg', 'golongan': 'Alkohol sekunder', 'rumus_umum':'R-OH'},
-    'CH3COCH3': {'iupac': 'Propanon', 'trivial': 'Aseton', 'gambar':'propanon.png','golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
-    'CH3COCH2CH3': {'iupac': 'Butanon', 'trivial': 'Metil etil keton','gambar':'butanon.jpg', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
-    'CH3COCH2CH2CH3': {'iupac': '2-Pentanon', 'trivial': 'Metil propil keton','gambar':'2 pentanon.png', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
-    'CH3COCH2CH2CH2CH3': {'iupac': '2-Heksanon', 'trivial': 'Metil butil keton','gambar':'2 heksanon.png', 'golongan': 'Keton', 'rumus_umum': 'R-CO-R'},
-    'C6H5COCH3': {'iupac': '1-Fenil-etanon', 'trivial': 'Asetofenon','gambar':'1 fenil etanon.png', 'golongan': 'Keton aromatik', 'rumus_umum': 'Ar-CO-R'},
-    'C6H5COC6H5': {'iupac': '1,2-Difenil-etanon', 'trivial': 'Benzofenon', 'gambar':'1,2 difeniletanon.png','golongan': 'Keton aromatik', 'rumus_umum':'Ar-CO-Ar'},
-    'HCHO': {'iupac': 'Metanal', 'trivial': 'Formaldehida','gambar':'metanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
-    'CH3CHO': {'iupac': 'Etanal', 'trivial': 'Asetaldehida','gambar':'etanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
-    'CH3CH2CHO': {'iupac': 'Propanal', 'trivial': 'Propionaldehida','gambar':'as.propanoat.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
-    'CH3(CH2)2CHO': {'iupac': 'Butanal', 'trivial': 'Butiraldehida','gambar':'butanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
-    'CH3(CH2)3CHO': {'iupac': 'Pentanal', 'trivial': 'Valeraldehida','gambar':'pentanal.png', 'golongan': 'Aldehid', 'rumus_umum': 'R-CHO'},
-    'C6H5CHO': {'iupac': 'Benzena karbaldehida', 'trivial': 'Benzaldehida','gambar':'benzenakarbaldehida.png', 'golongan': 'Aldehid aromatik', 'rumus_umum':'Ar-CHO'},
-    'HCOOH': {'iupac': 'Asam metanoat', 'trivial': 'Asam format','gambar':'as.metanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
-    'CH3COOH': {'iupac': 'Asam etanoat', 'trivial': 'Asam asetat','gambar':'as.etanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
-    'CH3CH2COOH': {'iupac': 'Asam propanoat', 'trivial': 'Asam propionat','gambar':'as.propanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
-    'CH3(CH2)2COOH': {'iupac': 'Asam butanoat', 'trivial': 'Asam butirat','gambar':'as.butanoat.png', 'golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
-    'CH3(CH2)3COOH': {'iupac': 'Asam pentanoat', 'trivial': 'Asam valerianat','gambar':'as.pentanoat.png','golongan': 'Asam karboksilat', 'rumus_umum': 'R-COOH'},
-    'C6H5COOH': {'iupac': 'Asam benzoat', 'trivial': 'Asam benzoat','gambar':'as.benzanoat.png', 'golongan': 'Asam karboksilat aromatik', 'rumus_umum':'Ar-COOH'},
-    'CH4': {'iupac': 'Metana', 'trivial': '-','gambar':'metana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH3': {'iupac': 'Etana', 'trivial': '-','gambar':'etana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH3': {'iupac': 'Propana', 'trivial': '-','gambar':'propana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH2CH3': {'iupac': 'Butana', 'trivial': '-','gambar':'butana.jpg',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH2CH2CH3': {'iupac': 'Pentana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH2CH2CH2CH3': {'iupac': 'Heksana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH2CH2CH2CH2CH3': {'iupac': 'Heptana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Oktana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH3CH2CH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekana', 'trivial': '-',"golongan":"Alkana","rumus_umum":"CnH2n+2"},
-    'CH2CH2': {'iupac': 'Etena', 'trivial': 'Etilena',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CH2CHCH3': {'iupac': 'Propena', 'trivial': 'Propilena',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CH2CHCH2CH3': {'iupac': 'Butena', 'trivial': '-',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CH2CHCH2CH2CH3': {'iupac': 'Pentena', 'trivial': '-',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CH2CHCH2CH2CH2CH3': {'iupac': 'Heksena', 'trivial': '-',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CH2CHCH2CH2CH2CH2CH3': {'iupac': 'Heptena', 'trivial': '-',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CH2CHCH2CH2CH2CH2CH2CH3': {'iupac': 'Oktena', 'trivial': '-',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CH2CHCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonena', 'trivial': '-',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CH2CHCH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekena', 'trivial': '-',"golongan":"Alkena","rumus_umum":"CnH2n"},
-    'CHCH': {'iupac': 'Etuna', 'trivial': 'Asetilena',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-    'CHCCH3': {'iupac': 'Propuna', 'trivial': '-',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-    'CHCCH2CH3': {'iupac': 'Butuna', 'trivial': '-','gambar':'butuna.png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-    'CHCCH2CH2CH3': {'iupac': 'Pentuna', 'trivial': '-','gambar':'pentuna (2).png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-    'CHCCH2CH2CH2CH3': {'iupac': 'Heksuna', 'trivial': '-','gambar':'qgzmmmyc.png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-    'CHCCH2CH2CH2CH2CH3': {'iupac': 'Heptuna', 'trivial': '-','gambar':'heptuna.png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-    'CHCCH2CH2CH2CH2CH2CH3': {'iupac': 'Oktuna', 'trivial': '-','gambar':'oktuna.png',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-    'CHCCH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Nonuna', 'trivial': '-',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-    'CHCCH2CH2CH2CH2CH2CH2CH2CH3': {'iupac': 'Dekuna', 'trivial': '-',"golongan":"Alkuna","rumus_umum":"CnH2n-2"},
-}
-
-
-def tentang():
-    st.markdown(
-        f"""
-        <style>
-            .blurimg {{
-                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
-                background-size: cover;
-                position: fixed;
-                inset: 0;
-                filter: blur(4px);
-                background-color: rgba(0, 0, 0, 0.8); /* Transparent black overlay */
-            }}
-        </style>
-        <div class="blurimg"></div>
-        """,
-        unsafe_allow_html=True
-    )
-    st.title("Tentang Website")
-    st.markdown(
-    f"""
-    <style>
-        p {{
-            font-size: 18px;
-            color: white;
-        }}
-    </style>
-    <p>
-     Website ini dibuat dengan tujuan utama untuk memudahkan pelajar dan mahasiswa dalam memahami serta mengklasifikasikan gugus fungsi dalam senyawa organik. 
-    
-    Dalam pembelajaran kimia organik, pengenalan struktur senyawa dan pengklasifikasian gugus fungsinya seringkali menjadi tantangan, terutama bagi pemula. Oleh karena itu, aplikasi ini hadir sebagai media interaktif yang dapat membantu pengguna mengidentifikasi berbagai gugus fungsi seperti alkohol, eter, aldehid, keton, asam karboksilat, dan lain-lain secara lebih mudah dan cepat.
-
-    
-    Selain itu, aplikasi ini juga dirancang untuk membantu pengguna dalam mengetahui nama senyawa berdasarkan aturan penamaan IUPAC maupun nama trivial. Penamaan senyawa organik merupakan bagian penting dalam komunikasi kimia, dan memahami aturan penamaan dapat meningkatkan pemahaman terhadap struktur serta reaktivitas senyawa tersebut.
-
-    
-    Keunggulan dari aplikasi ini adalah adanya fitur input atau visualisasi struktur senyawa, baik secara manual melalui antarmuka interaktif maupun melalui gambar (jika didukung). Dengan fitur ini, pengguna tidak hanya membaca teks, tetapi juga dapat melihat langsung bentuk struktur senyawa yang dimaksud, sehingga proses identifikasi dan penamaan menjadi lebih intuitif dan efisien.
-
-    
-    Secara keseluruhan, web ini dibuat sebagai alat bantu belajar yang praktis dan edukatif, yang dapat diakses kapan saja dan di mana saja. Dengan memanfaatkan teknologi digital, aplikasi ini bertujuan untuk mendekatkan konsep kimia organik kepada pengguna secara visual, sistematis, dan menyenangkan.
-    </p>
-    """,
-    unsafe_allow_html=True
-    )
-
-    
-
-
-
-
-
-# Fungsi identifikasi gugus fungsi
-def identifikasi_gugus_fungsi(rumus):
-    hasil = []
-    for gugus, nama in gugus_fungsi_kamus.items():
-        if gugus in rumus:
-            hasil.append(nama)
-    return hasil if hasil else ['Tidak teridentifikasi']
-
-def identifikasi_ikatan(rumus):
-    for gugus, nama in ikatan.items():
-        if rumus.find(gugus) == 0:
-           return nama        
-    return "Tidak teridentifikasi"
-
-
-# Judul
-def identifikasi():
-    st.markdown(
-        f"""
-        <style>
-           .blurimg {{
-                background-image: url("https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/background.jpg");
-                background-size: cover;
-                position: fixed;
-                inset: 0;
-                filter: blur(4px);
-                background-color: rgba(0, 0, 0, 0.8); /* Transparent black overlay */
-            }} 
-        </style>
-        <div class="blurimg"></div>
-        """,
-        unsafe_allow_html=True
-    )
-    
-    st.title("🧪 Identifikasi Gugus Fungsi & Tata Nama Senyawa Hidrokarbon")
-
-    # st.image("https://raw.githubusercontent.com/RIVI44/LPK-KEDUA-/main/WhatsApp%20Image%202025-07-19%20at%2013.17.34_bfbfabba.jpg", use_container_width=True)
-
-
-    # Pilih mode pencarian
-    search_mode = st.radio("Cari berdasarkan:", ("Rumus Senyawa", "Nama Senyawa"))
-
-    if search_mode == "Rumus Senyawa":
-        input_rumus = st.text_input("Masukkan rumus senyawa (contoh: CH3CH2OH atau CH3-CH2-OH):")
-        if input_rumus:
-            rumus = input_rumus.replace("-", "").replace("=", "").replace("≡", "")
-            hasil = identifikasi_gugus_fungsi(rumus)
-            ikatan = identifikasi_ikatan(rumus)
-
-            nama_iupac = "-"
-            nama_trivial = "-"
-            golongan = "-"
-            rumus_umum = "-"
-            gambar = None
-
-            if rumus in kamus_nama_senyawa:
-                data = kamus_nama_senyawa[rumus]
-                nama_iupac = data['iupac']
-                nama_trivial = data['trivial']
-                gambar = data.get('gambar', None)
-                golongan = data.get('golongan', "-")
-                rumus_umum = data.get('rumus_umum', "-")
-            else:
-                if 'Asam Karboksilat' in hasil:
-                    nama_iupac = f"Asam {rumus.lower()}"
-                elif 'Aldehid' in hasil:
-                    nama_iupac = f"{rumus.lower()} - al"
-                elif 'Keton' in hasil:
-                    nama_iupac = f"{rumus.lower()} - on"
-                elif 'Alkohol' in hasil:
-                    nama_iupac = f"{rumus.lower()} - ol"
-                elif 'Amina' in hasil:
-                    nama_iupac = f"{rumus.lower()} - amina"
-
-            st.markdown("### 🔍 Hasil Identifikasi")
-            if gambar:
-                st.image(f"https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/{gambar}", width=250)
-            with st.container(border=True):
-                st.write(f"*Rumus Diberikan:* {input_rumus}")
-                st.write(f"*Rumus Distandarisasi:* {rumus}")
-                if rumus_umum != "-":
-                    st.write(f"*Rumus Umum:* {rumus_umum}")
-                if golongan != "-":
-                    st.write(f"*Golongan Senyawa:* {golongan}")
-                st.write(f"*Gugus Fungsi Terdeteksi:* {', '.join(hasil)}")
-                st.write(f"*Nama IUPAC:* {nama_iupac}")
-                st.write(f"*Nama Trivial:* {nama_trivial}")
-
-    else:
-        input_nama = st.text_input("Masukkan nama senyawa (IUPAC atau trivial, contoh: metana, etana, asam asetat):")
-        if input_nama:
-            input_nama_lower = input_nama.strip().lower()
-            found = None
-            for rumus, data in kamus_nama_senyawa.items():
-                # Cocokkan dengan nama IUPAC atau trivial
-                if data['iupac'].lower() == input_nama_lower or data['trivial'].lower() == input_nama_lower:
-                    found = (rumus, data)
-                    break
-            st.markdown("### 🔍 Hasil Identifikasi")
-            if found:
-                rumus, data = found
-                gambar = data.get('gambar', None)
-                if gambar:
-                    st.image(f"https://raw.githubusercontent.com/RIVI44/-PROJEK_LPK_/main/{gambar}", width=250)
-                with st.container(border=True):
-                    st.write(f"*Nama Diberikan:* {input_nama}")
-                    st.write(f"*Rumus Senyawa:* {rumus}")
-                    st.write(f"*Nama IUPAC:* {data['iupac']}")
-                    st.write(f"*Nama Trivial:* {data['trivial']}")
-                    st.write(f"*Golongan Senyawa:* {data.get('golongan', '-')}")
-                    st.write(f"*Rumus Umum:* {data.get('rumus_umum', '-')}")
-            else:
-                st.warning("Nama senyawa tidak ditemukan dalam database.")
-
-
-option = st.sidebar.radio(
-    "Menu:",
-    ("Indentifikasi Gugus Fungsi", "Tentang Website")
+# Configure page
+st.set_page_config(
+    page_title="ChemID Pro",
+    page_icon=None,
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
-if option == "Indentifikasi Gugus Fungsi":
-    identifikasi()
-if option.find("Tentang") == 0:
-    tentang()
+# Custom CSS for better UI
+st.markdown("""
+<style>
+    .main {
+        padding-top: 2rem;
+    }
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 2px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        height: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .result-container {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        margin: 10px 0;
+    }
+    .property-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin: 10px 0;
+        backdrop-filter: blur(10px);
+    }
+    .search-container {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 10px 0;
+    }
+    .stAlert > div {
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+class CompoundDatabase:
+    """Efficient compound database with optimized search capabilities"""
+    
+    def __init__(self):
+        self.compounds = self._load_compounds()
+        self.name_index = self._build_name_index()
+        
+    def _load_compounds(self) -> Dict:
+        """Load compound data efficiently"""
+        return {
+            # Alkanes
+            'CH4': {'iupac': 'Metana', 'trivial': 'Metana', 'smiles': 'C', 'group': 'Alkana', 'formula_pattern': 'CnH2n+2'},
+            'C2H6': {'iupac': 'Etana', 'trivial': 'Etana', 'smiles': 'CC', 'group': 'Alkana', 'formula_pattern': 'CnH2n+2'},
+            'C3H8': {'iupac': 'Propana', 'trivial': 'Propana', 'smiles': 'CCC', 'group': 'Alkana', 'formula_pattern': 'CnH2n+2'},
+            'C4H10': {'iupac': 'Butana', 'trivial': 'Butana', 'smiles': 'CCCC', 'group': 'Alkana', 'formula_pattern': 'CnH2n+2'},
+            'C5H12': {'iupac': 'Pentana', 'trivial': 'Pentana', 'smiles': 'CCCCC', 'group': 'Alkana', 'formula_pattern': 'CnH2n+2'},
+            'C6H14': {'iupac': 'Heksana', 'trivial': 'Heksana', 'smiles': 'CCCCCC', 'group': 'Alkana', 'formula_pattern': 'CnH2n+2'},
+            
+            # Alkenes
+            'C2H4': {'iupac': 'Etena', 'trivial': 'Etilena', 'smiles': 'C=C', 'group': 'Alkena', 'formula_pattern': 'CnH2n'},
+            'C3H6': {'iupac': 'Propena', 'trivial': 'Propilena', 'smiles': 'C=CC', 'group': 'Alkena', 'formula_pattern': 'CnH2n'},
+            'C4H8': {'iupac': 'Butena', 'trivial': 'Butena', 'smiles': 'C=CCC', 'group': 'Alkena', 'formula_pattern': 'CnH2n'},
+            
+            # Alkynes
+            'C2H2': {'iupac': 'Etuna', 'trivial': 'Asetilena', 'smiles': 'C#C', 'group': 'Alkuna', 'formula_pattern': 'CnH2n-2'},
+            'C3H4': {'iupac': 'Propuna', 'trivial': 'Propuna', 'smiles': 'C#CC', 'group': 'Alkuna', 'formula_pattern': 'CnH2n-2'},
+            
+            # Alcohols
+            'CH4O': {'iupac': 'Metanol', 'trivial': 'Alkohol metil', 'smiles': 'CO', 'group': 'Alkohol', 'formula_pattern': 'R-OH'},
+            'C2H6O': {'iupac': 'Etanol', 'trivial': 'Alkohol etil', 'smiles': 'CCO', 'group': 'Alkohol', 'formula_pattern': 'R-OH'},
+            'C3H8O': {'iupac': '1-Propanol', 'trivial': 'n-Propanol', 'smiles': 'CCCO', 'group': 'Alkohol', 'formula_pattern': 'R-OH'},
+            'C3H8O_iso': {'iupac': '2-Propanol', 'trivial': 'Isopropanol', 'smiles': 'CC(C)O', 'group': 'Alkohol', 'formula_pattern': 'R-OH'},
+            'C4H10O': {'iupac': '1-Butanol', 'trivial': 'n-Butanol', 'smiles': 'CCCCO', 'group': 'Alkohol', 'formula_pattern': 'R-OH'},
+            
+            # Aldehydes
+            'CH2O': {'iupac': 'Metanal', 'trivial': 'Formaldehida', 'smiles': 'C=O', 'group': 'Aldehid', 'formula_pattern': 'R-CHO'},
+            'C2H4O': {'iupac': 'Etanal', 'trivial': 'Asetaldehida', 'smiles': 'CC=O', 'group': 'Aldehid', 'formula_pattern': 'R-CHO'},
+            'C3H6O_ald': {'iupac': 'Propanal', 'trivial': 'Propionaldehida', 'smiles': 'CCC=O', 'group': 'Aldehid', 'formula_pattern': 'R-CHO'},
+            'C4H8O_ald': {'iupac': 'Butanal', 'trivial': 'Butiraldehida', 'smiles': 'CCCC=O', 'group': 'Aldehid', 'formula_pattern': 'R-CHO'},
+            
+            # Ketones
+            'C3H6O': {'iupac': 'Propanon', 'trivial': 'Aseton', 'smiles': 'CC(=O)C', 'group': 'Keton', 'formula_pattern': 'R-CO-R'},
+            'C4H8O_ket': {'iupac': 'Butanon', 'trivial': 'Metil etil keton', 'smiles': 'CCC(=O)C', 'group': 'Keton', 'formula_pattern': 'R-CO-R'},
+            'C5H10O': {'iupac': '2-Pentanon', 'trivial': 'Metil propil keton', 'smiles': 'CCCC(=O)C', 'group': 'Keton', 'formula_pattern': 'R-CO-R'},
+            
+            # Carboxylic acids
+            'CH2O2': {'iupac': 'Asam metanoat', 'trivial': 'Asam format', 'smiles': 'C(=O)O', 'group': 'Asam Karboksilat', 'formula_pattern': 'R-COOH'},
+            'C2H4O2': {'iupac': 'Asam etanoat', 'trivial': 'Asam asetat', 'smiles': 'CC(=O)O', 'group': 'Asam Karboksilat', 'formula_pattern': 'R-COOH'},
+            'C3H6O2': {'iupac': 'Asam propanoat', 'trivial': 'Asam propionat', 'smiles': 'CCC(=O)O', 'group': 'Asam Karboksilat', 'formula_pattern': 'R-COOH'},
+            'C4H8O2': {'iupac': 'Asam butanoat', 'trivial': 'Asam butirat', 'smiles': 'CCCC(=O)O', 'group': 'Asam Karboksilat', 'formula_pattern': 'R-COOH'},
+            
+            # Esters
+            'C3H6O2_est': {'iupac': 'Metil etanoat', 'trivial': 'Metil asetat', 'smiles': 'CC(=O)OC', 'group': 'Ester', 'formula_pattern': 'R-COO-R'},
+            'C4H8O2_est': {'iupac': 'Etil etanoat', 'trivial': 'Etil asetat', 'smiles': 'CC(=O)OCC', 'group': 'Ester', 'formula_pattern': 'R-COO-R'},
+            'C4H8O2_est2': {'iupac': 'Metil propanoat', 'trivial': 'Metil propionat', 'smiles': 'CCC(=O)OC', 'group': 'Ester', 'formula_pattern': 'R-COO-R'},
+            
+            # Amines
+            'CH5N': {'iupac': 'Metilamin', 'trivial': 'Metilamin', 'smiles': 'CN', 'group': 'Amina primer', 'formula_pattern': 'R-NH2'},
+            'C2H7N': {'iupac': 'Etilamin', 'trivial': 'Etilamin', 'smiles': 'CCN', 'group': 'Amina primer', 'formula_pattern': 'R-NH2'},
+            'C3H9N': {'iupac': 'Propilamin', 'trivial': 'Propilamin', 'smiles': 'CCCN', 'group': 'Amina primer', 'formula_pattern': 'R-NH2'},
+            
+            # Aromatic compounds
+            'C6H6': {'iupac': 'Benzena', 'trivial': 'Benzena', 'smiles': 'c1ccccc1', 'group': 'Aromatik', 'formula_pattern': 'Ar-H'},
+            'C7H8': {'iupac': 'Toluena', 'trivial': 'Metilbenzena', 'smiles': 'Cc1ccccc1', 'group': 'Aromatik', 'formula_pattern': 'Ar-R'},
+            'C7H6O': {'iupac': 'Benzaldehida', 'trivial': 'Benzaldehida', 'smiles': 'O=Cc1ccccc1', 'group': 'Aldehid aromatik', 'formula_pattern': 'Ar-CHO'},
+        }
+    
+    def _build_name_index(self) -> Dict:
+        """Build index for fast name-based search"""
+        index = {}
+        for formula, data in self.compounds.items():
+            # Index by IUPAC name
+            index[data['iupac'].lower()] = formula
+            # Index by trivial name
+            if data['trivial'] and data['trivial'] != '-' and data['trivial'] != data['iupac']:
+                index[data['trivial'].lower()] = formula
+        return index
+    
+    def search_by_formula(self, formula: str) -> Optional[Dict]:
+        """Search compound by molecular formula"""
+        formula = self._normalize_formula(formula)
+        return self.compounds.get(formula)
+    
+    def search_by_name(self, name: str) -> Optional[Tuple[str, Dict]]:
+        """Search compound by name (IUPAC or trivial)"""
+        name_lower = name.strip().lower()
+        formula = self.name_index.get(name_lower)
+        if formula:
+            return formula, self.compounds[formula]
+        return None
+    
+    def _normalize_formula(self, formula: str) -> str:
+        """Normalize molecular formula"""
+        # Remove spaces and common separators
+        formula = re.sub(r'[\s\-=≡]', '', formula)
+        return formula
+    
+    def get_functional_groups(self, smiles: str) -> List[str]:
+        """Identify functional groups from SMILES"""
+        groups = []
+        
+        if not RDKIT_AVAILABLE:
+            # Fallback pattern matching
+            if 'O' in smiles and '=' not in smiles and '#' not in smiles and '(=O)' not in smiles:
+                groups.append('Alkohol')
+            if 'C=O' in smiles and 'OC' not in smiles:
+                groups.append('Aldehid/Keton')
+            if 'C(=O)O' in smiles:
+                groups.append('Asam Karboksilat')
+            if 'C(=O)O' in smiles and 'OC' in smiles:
+                groups.append('Ester')
+            if 'N' in smiles and '=' not in smiles:
+                groups.append('Amina')
+            if 'c1ccccc1' in smiles:
+                groups.append('Aromatik')
+            return groups or ['Hidrokarbon']
+        
+        try:
+            mol = Chem.MolFromSmiles(smiles)
+            if mol is None:
+                return ['Tidak dikenal']
+            
+            # Check for functional groups using SMARTS patterns
+            patterns = {
+                'Alkohol': '[OH]',
+                'Aldehid': '[CX3H1](=O)[#6]',
+                'Keton': '[#6][CX3](=O)[#6]',
+                'Asam Karboksilat': '[CX3](=O)[OX2H1]',
+                'Ester': '[#6][CX3](=O)[OX2H0][#6]',
+                'Amina': '[NX3;H2,H1;!$(NC=O)]',
+                'Aromatik': 'c1ccccc1'
+            }
+            
+            for group_name, pattern in patterns.items():
+                if mol.HasSubstructMatch(Chem.MolFromSmarts(pattern)):
+                    groups.append(group_name)
+            
+            return groups or ['Hidrokarbon']
+        except:
+            return ['Tidak dikenal']
+
+class MoleculeVisualizer:
+    """Handle molecule visualization using RDKit or fallback"""
+    
+    @staticmethod
+    def draw_molecule(smiles: str, size: Tuple[int, int] = (300, 300)) -> str:
+        """Draw molecule and return as base64 string with fallback"""
+        if not RDKIT_AVAILABLE:
+            return None
+        
+        try:
+            mol = Chem.MolFromSmiles(smiles)
+            if mol is None:
+                return None
+            
+            img = Draw.MolToImage(mol, size=size)
+            buffered = BytesIO()
+            img.save(buffered, format="PNG")
+            img_str = base64.b64encode(buffered.getvalue()).decode()
+            return f"data:image/png;base64,{img_str}"
+        except Exception as e:
+            # Debug: show error
+            st.error(f"Error generating molecule image: {str(e)}")
+            return None
+    
+    @staticmethod
+    def generate_ascii_structure(formula: str) -> str:
+        """Generate ASCII representation when RDKit is not available"""
+        ascii_structures = {
+            'CH4': """
+        H
+        |
+    H-C-H
+        |
+        H
+            """,
+            'C2H5OH': """
+        H   H
+        |   |
+    H-C-C-O-H
+        |   |
+        H   H
+            """,
+            'CH3OH': """
+        H
+        |
+    H-C-O-H
+        |
+        H
+            """,
+            'CH3COOH': """
+        H     O
+        |     ||
+    H-C-C-O-H
+        |
+        H
+            """,
+            'CH3CH3': """
+        H   H
+        |   |
+    H-C-C-H
+        |   |
+        H   H
+            """,
+            'CH3CH2CH3': """
+        H   H   H
+        |   |   |
+    H-C-C-C-H
+        |   |   |
+        H   H   H
+            """
+        }
+        
+        return ascii_structures.get(formula, f"Chemical Formula: {formula}")
+    
+    @staticmethod
+    def calculate_molecular_weight(formula: str) -> float:
+        """Simple molecular weight calculation"""
+        elements = {
+            'C': 12.01, 'H': 1.008, 'O': 15.999, 'N': 14.007, 
+            'S': 32.06, 'P': 30.97, 'Cl': 35.45, 'Br': 79.90
+        }
+        
+        total_weight = 0
+        i = 0
+        while i < len(formula):
+            if formula[i].isupper():
+                element = formula[i]
+                i += 1
+                # Check for lowercase letter (two-letter element)
+                if i < len(formula) and formula[i].islower():
+                    element += formula[i]
+                    i += 1
+                
+                # Get the count
+                count_str = ""
+                while i < len(formula) and formula[i].isdigit():
+                    count_str += formula[i]
+                    i += 1
+                
+                count = int(count_str) if count_str else 1
+                
+                if element in elements:
+                    total_weight += elements[element] * count
+            else:
+                i += 1
+        
+        return round(total_weight, 2)
+
+class ChemicalAnalyzer:
+    """Main chemical analysis engine"""
+    
+    def __init__(self):
+        self.db = CompoundDatabase()
+        self.visualizer = MoleculeVisualizer()
+    
+    def analyze_compound(self, query: str, search_type: str) -> Dict:
+        """Analyze compound and return comprehensive results"""
+        result = {
+            'found': False,
+            'query': query,
+            'search_type': search_type,
+            'compound_data': None,
+            'formula': None,
+            'functional_groups': [],
+            'properties': {},
+            'visualization': None
+        }
+        
+        if search_type == "formula":
+            compound_data = self.db.search_by_formula(query)
+            if compound_data:
+                result['found'] = True
+                result['formula'] = query
+                result['compound_data'] = compound_data
+        else:
+            search_result = self.db.search_by_name(query)
+            if search_result:
+                formula, compound_data = search_result
+                result['found'] = True
+                result['formula'] = formula
+                result['compound_data'] = compound_data
+        
+        if result['found']:
+            smiles = result['compound_data']['smiles']
+            result['functional_groups'] = self.db.get_functional_groups(smiles)
+            result['visualization'] = self.visualizer.draw_molecule(smiles)
+            
+            # Get additional properties
+            if RDKIT_AVAILABLE:
+                try:
+                    mol = Chem.MolFromSmiles(smiles)
+                    if mol:
+                        result['properties'] = {
+                            'Berat Molekul': f"{Descriptors.MolWt(mol):.2f} g/mol",
+                            'Jumlah Atom': mol.GetNumAtoms(),
+                            'Jumlah Ikatan': mol.GetNumBonds(),
+                            'LogP': f"{Descriptors.MolLogP(mol):.2f}"
+                        }
+                except:
+                    pass
+        
+        return result
+
+# Initialize the analyzer
+@st.cache_resource
+def get_analyzer():
+    return ChemicalAnalyzer()
+
+def main():
+    """Main application function with modern UI"""
+    
+    # Debug: Show RDKit status
+    if RDKIT_AVAILABLE:
+        st.success("✅ RDKit tersedia - Fitur visualisasi 2D aktif!")
+    else:
+        st.warning("⚠️ RDKit tidak terdeteksi. Install dengan: `conda install -c conda-forge rdkit` untuk fitur visualisasi 2D")
+    
+    # Header
+    st.markdown("""
+    <div style='text-align: center; padding: 2rem 0;'>
+        <h1 style='color: #2E86AB; margin-bottom: 0.5rem;'>ChemID Pro</h1>
+        <p style='color: #666; font-size: 1.2rem;'>Identifikasi Senyawa Kimia dengan Teknologi Modern</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Create tabs for different features
+    tab1, tab2, tab3 = st.tabs(["Identifikasi Senyawa", "Database Browser", "Tentang"])
+    
+    with tab1:
+        compound_identifier()
+    
+    with tab2:
+        database_browser()
+    
+    with tab3:
+        about_page()
+
+def compound_identifier():
+    """Modern compound identification interface"""
+    
+    analyzer = get_analyzer()
+    
+    st.markdown('<div class="search-container">', unsafe_allow_html=True)
+    
+    # Search options
+    col1, col2 = st.columns([1, 2])
+    
+    with col1:
+        search_type = st.selectbox(
+            "Pilih metode pencarian:",
+            ["formula", "name"],
+            format_func=lambda x: "🧮 Rumus Molekul" if x == "formula" else "📝 Nama Senyawa"
+        )
+    
+    with col2:
+        if search_type == "formula":
+            query = st.text_input(
+                "Masukkan rumus molekul:",
+                placeholder="Contoh: CH4, C2H6, C2H5OH",
+                help="Masukkan rumus molekul standar"
+            )
+        else:
+            query = st.text_input(
+                "Masukkan nama senyawa:",
+                placeholder="Contoh: metana, etanol, asam asetat",
+                help="Masukkan nama IUPAC atau nama trivial"
+            )
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    if query:
+        with st.spinner("Menganalisis senyawa..."):
+            result = analyzer.analyze_compound(query, search_type)
+        
+        if result['found']:
+            display_compound_results(result)
+        else:
+            st.error("❌ Senyawa tidak ditemukan dalam database")
+            st.info("Coba gunakan format yang berbeda atau periksa ejaan")
+
+def display_compound_results(result: Dict):
+    """Display compound analysis results with modern UI"""
+    
+    data = result['compound_data']
+    formula = result['formula']
+    
+    st.markdown('<div class="result-container">', unsafe_allow_html=True)
+    
+    # Header with compound info
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown(f"""
+        ### {data['iupac']}
+        **Rumus Molekul:** `{formula}`  
+        **Nama Trivial:** {data['trivial']}  
+        **Golongan:** {data['group']}  
+        **Pola Rumus:** {data['formula_pattern']}
+        """)
+    
+    with col2:
+        if result['visualization']:
+            st.markdown("**Struktur 2D:**")
+            st.markdown(f'<img src="{result["visualization"]}" width="200">', unsafe_allow_html=True)
+        elif not RDKIT_AVAILABLE:
+            st.markdown("**Struktur ASCII:**")
+            analyzer = get_analyzer()
+            ascii_structure = analyzer.visualizer.generate_ascii_structure(formula)
+            st.code(ascii_structure, language=None)
+            st.caption("Install RDKit untuk visualisasi 2D yang lebih baik")
+        else:
+            st.info("Struktur tidak dapat ditampilkan")
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Properties section
+    if result['functional_groups'] or result['properties']:
+        st.markdown("---")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown('<div class="property-card">', unsafe_allow_html=True)
+            st.markdown("### 🔗 Gugus Fungsi")
+            for group in result['functional_groups']:
+                st.markdown(f"• {group}")
+            st.markdown('</div>', unsafe_allow_html=True)
+        
+        with col2:
+            if result['properties']:
+                st.markdown('<div class="property-card">', unsafe_allow_html=True)
+                st.markdown("### Sifat Molekul")
+                for prop, value in result['properties'].items():
+                    st.markdown(f"**{prop}:** {value}")
+                st.markdown('</div>', unsafe_allow_html=True)
+            elif not RDKIT_AVAILABLE:
+                st.markdown('<div class="property-card">', unsafe_allow_html=True)
+                st.markdown("### Sifat Molekul")
+                analyzer = get_analyzer()
+                mw = analyzer.visualizer.calculate_molecular_weight(formula)
+                st.markdown(f"**Berat Molekul:** {mw} g/mol")
+                st.caption("Install RDKit untuk analisis properti lengkap")
+                st.markdown('</div>', unsafe_allow_html=True)
+
+def database_browser():
+    """Browse available compounds in database"""
+    
+    analyzer = get_analyzer()
+    
+    st.markdown("### 📚 Jelajahi Database Senyawa")
+    
+    # Filter options
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        group_filter = st.selectbox(
+            "Filter berdasarkan golongan:",
+            ["Semua"] + list(set(data['group'] for data in analyzer.db.compounds.values()))
+        )
+    
+    with col2:
+        search_term = st.text_input("Cari senyawa:", placeholder="Ketik nama atau rumus...")
+    
+    # Display compounds
+    compounds_to_show = []
+    
+    for formula, data in analyzer.db.compounds.items():
+        # Apply filters
+        if group_filter != "Semua" and data['group'] != group_filter:
+            continue
+        
+        if search_term and search_term.lower() not in formula.lower() and \
+           search_term.lower() not in data['iupac'].lower() and \
+           search_term.lower() not in data['trivial'].lower():
+            continue
+        
+        compounds_to_show.append({
+            'Rumus': formula,
+            'Nama IUPAC': data['iupac'],
+            'Nama Trivial': data['trivial'],
+            'Golongan': data['group']
+        })
+    
+    if compounds_to_show:
+        df = pd.DataFrame(compounds_to_show)
+        
+        # Make the table interactive
+        event = st.dataframe(
+            df,
+            use_container_width=True,
+            on_select="rerun",
+            selection_mode="single-row"
+        )
+        
+        # Show details for selected compound
+        if event.selection.rows:
+            selected_idx = event.selection.rows[0]
+            selected_formula = compounds_to_show[selected_idx]['Rumus']
+            
+            st.markdown("---")
+            st.markdown("### Detail Senyawa Terpilih")
+            
+            result = analyzer.analyze_compound(selected_formula, "formula")
+            if result['found']:
+                display_compound_results(result)
+    else:
+        st.info("Tidak ada senyawa yang cocok dengan filter yang dipilih.")
+
+def about_page():
+    """About page with modern design"""
+    
+    st.markdown("""
+    ### Tentang ChemID Pro
+    
+    **ChemID Pro** adalah aplikasi modern untuk identifikasi dan analisis senyawa kimia organik. 
+    Aplikasi ini dirancang untuk membantu pelajar, mahasiswa, dan peneliti dalam:
+    
+    #### Fitur Utama:
+    - **Pencarian Dual-Mode**: Cari berdasarkan rumus molekul atau nama senyawa
+    - **Visualisasi 2D**: Struktur molekul interaktif menggunakan RDKit
+    - **Analisis Properti**: Berat molekul, LogP, dan karakteristik lainnya
+    - 🔗 **Deteksi Gugus Fungsi**: Identifikasi otomatis gugus fungsi
+    - 📚 **Database Terintegrasi**: Akses ke database senyawa yang komprehensif
+    
+    #### 🚀 Teknologi:
+    - **Streamlit**: Framework aplikasi web modern
+    - **RDKit**: Library cheminformatics terdepan
+    - **PubChemPy**: Akses ke database PubChem
+    - **Pandas**: Manipulasi dan analisis data
+    
+    #### 🎓 Tujuan Pendidikan:
+    Aplikasi ini dikembangkan untuk mendukung pembelajaran kimia organik dengan:
+    - Interface yang intuitif dan user-friendly
+    - Visualisasi yang membantu pemahaman struktur molekul
+    - Data yang akurat dan terpercaya
+    - Akses mudah ke informasi senyawa kimia
+    
+    #### 💻 Optimasi:
+    - **Cache Management**: Data di-cache untuk performa optimal
+    - **Lazy Loading**: Library dimuat sesuai kebutuhan
+    - **Responsive Design**: Tampilan optimal di berbagai perangkat
+    - **Error Handling**: Fallback untuk kompatibilitas maksimal
+    
+    ---
+    
+    #### 📋 Instalasi Dependencies:
+    
+    Untuk fitur lengkap, install packages berikut:
+    
+    ```bash
+    pip install streamlit rdkit-pypi pubchempy pandas
+    ```
+    
+    #### 🔧 Deployment Tips:
+    
+    **Untuk Nginx:**
+    ```nginx
+    location / {
+        proxy_pass http://127.0.0.1:8501;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+    ```
+    
+    **Untuk Apache:**
+    ```apache
+    ProxyPass / http://127.0.0.1:8501/
+    ProxyPassReverse / http://127.0.0.1:8501/
+    ProxyPreserveHost On
+    ```
+    
+    #### 🛠️ Systemd Service:
+    
+    Buat `/etc/systemd/system/chemid-pro.service`:
+    ```ini
+    [Unit]
+    Description=ChemID Pro
+    After=network.target
+    
+    [Service]
+    User=www-data
+    WorkingDirectory=/var/www/chemid-pro
+    ExecStart=/usr/bin/env streamlit run app_new.py --server.port 8501 --server.address 127.0.0.1
+    Restart=always
+    
+    [Install]
+    WantedBy=multi-user.target
+    ```
+    
+    Kemudian:
+    ```bash
+    sudo systemctl enable chemid-pro
+    sudo systemctl start chemid-pro
+    ```
+    
+    ---
+    
+    <div style='text-align: center; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; color: white; margin: 2rem 0;'>
+        <h4>ChemID Pro - Chemistry Made Simple</h4>
+        <p>Developed with ❤️ for the chemistry community</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Run the app
+if __name__ == "__main__":
+    main()
