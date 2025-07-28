@@ -379,13 +379,7 @@ def get_analyzer():
 
 def main():
     """Main application function with modern UI"""
-    
-    # Debug: Show RDKit status
-    if RDKIT_AVAILABLE:
-        st.success("✅ RDKit tersedia - Fitur visualisasi 2D aktif!")
-    else:
-        st.warning("⚠️ RDKit tidak terdeteksi. Install dengan: `conda install -c conda-forge rdkit` untuk fitur visualisasi 2D")
-    
+
     # Header
     st.markdown("""
     <div style='text-align: center; padding: 2rem 0;'>
@@ -420,7 +414,7 @@ def compound_identifier():
         search_type = st.selectbox(
             "Pilih metode pencarian:",
             ["formula", "name"],
-            format_func=lambda x: "🧮 Rumus Molekul" if x == "formula" else "📝 Nama Senyawa"
+            format_func=lambda x: "Rumus Molekul" if x == "formula" else "Nama Senyawa"
         )
     
     with col2:
@@ -492,9 +486,9 @@ def display_compound_results(result: Dict):
         
         with col1:
             st.markdown('<div class="property-card">', unsafe_allow_html=True)
-            st.markdown("### 🔗 Gugus Fungsi")
+            st.markdown("### Gugus Fungsi")
             for group in result['functional_groups']:
-                st.markdown(f"• {group}")
+                st.markdown(f"- {group}")
             st.markdown('</div>', unsafe_allow_html=True)
         
         with col2:
@@ -590,89 +584,22 @@ def about_page():
     - **Pencarian Dual-Mode**: Cari berdasarkan rumus molekul atau nama senyawa
     - **Visualisasi 2D**: Struktur molekul interaktif menggunakan RDKit
     - **Analisis Properti**: Berat molekul, LogP, dan karakteristik lainnya
-    - 🔗 **Deteksi Gugus Fungsi**: Identifikasi otomatis gugus fungsi
-    - 📚 **Database Terintegrasi**: Akses ke database senyawa yang komprehensif
+    - **Deteksi Gugus Fungsi**: Identifikasi otomatis gugus fungsi
+    - **Database Terintegrasi**: Akses ke database senyawa yang komprehensif
     
-    #### 🚀 Teknologi:
+    #### Teknologi:
     - **Streamlit**: Framework aplikasi web modern
     - **RDKit**: Library cheminformatics terdepan
     - **PubChemPy**: Akses ke database PubChem
     - **Pandas**: Manipulasi dan analisis data
     
-    #### 🎓 Tujuan Pendidikan:
+    #### Tujuan Pendidikan:
     Aplikasi ini dikembangkan untuk mendukung pembelajaran kimia organik dengan:
     - Interface yang intuitif dan user-friendly
     - Visualisasi yang membantu pemahaman struktur molekul
     - Data yang akurat dan terpercaya
     - Akses mudah ke informasi senyawa kimia
-    
-    #### 💻 Optimasi:
-    - **Cache Management**: Data di-cache untuk performa optimal
-    - **Lazy Loading**: Library dimuat sesuai kebutuhan
-    - **Responsive Design**: Tampilan optimal di berbagai perangkat
-    - **Error Handling**: Fallback untuk kompatibilitas maksimal
-    
-    ---
-    
-    #### 📋 Instalasi Dependencies:
-    
-    Untuk fitur lengkap, install packages berikut:
-    
-    ```bash
-    pip install streamlit rdkit-pypi pubchempy pandas
-    ```
-    
-    #### 🔧 Deployment Tips:
-    
-    **Untuk Nginx:**
-    ```nginx
-    location / {
-        proxy_pass http://127.0.0.1:8501;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-    }
-    ```
-    
-    **Untuk Apache:**
-    ```apache
-    ProxyPass / http://127.0.0.1:8501/
-    ProxyPassReverse / http://127.0.0.1:8501/
-    ProxyPreserveHost On
-    ```
-    
-    #### 🛠️ Systemd Service:
-    
-    Buat `/etc/systemd/system/chemid-pro.service`:
-    ```ini
-    [Unit]
-    Description=ChemID Pro
-    After=network.target
-    
-    [Service]
-    User=www-data
-    WorkingDirectory=/var/www/chemid-pro
-    ExecStart=/usr/bin/env streamlit run app_new.py --server.port 8501 --server.address 127.0.0.1
-    Restart=always
-    
-    [Install]
-    WantedBy=multi-user.target
-    ```
-    
-    Kemudian:
-    ```bash
-    sudo systemctl enable chemid-pro
-    sudo systemctl start chemid-pro
-    ```
-    
-    ---
-    
-    <div style='text-align: center; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; color: white; margin: 2rem 0;'>
-        <h4>ChemID Pro - Chemistry Made Simple</h4>
-        <p>Developed with ❤️ for the chemistry community</p>
-    </div>
+
     """, unsafe_allow_html=True)
 
 # Run the app
