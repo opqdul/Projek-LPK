@@ -2,4 +2,4 @@ setup.sh
 INSTALLATION.md
 requirements.txt
 requirements_minimal.txt
-.devcontainer/
+.devcontainer/devcontainer.json
