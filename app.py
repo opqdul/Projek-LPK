@@ -440,7 +440,7 @@ def compound_identifier():
         if result['found']:
             display_compound_results(result)
         else:
-            st.error("❌ Senyawa tidak ditemukan dalam database")
+            st.error("Senyawa tidak ditemukan dalam database")
             st.info("Coba gunakan format yang berbeda atau periksa ejaan")
 
 def display_compound_results(result: Dict):
@@ -512,7 +512,7 @@ def database_browser():
     
     analyzer = get_analyzer()
     
-    st.markdown("### 📚 Jelajahi Database Senyawa")
+    st.markdown("### Jelajahi Database Senyawa")
     
     # Filter options
     col1, col2 = st.columns(2)
