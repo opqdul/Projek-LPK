@@ -4,9 +4,9 @@ import re
 from typing import Dict, List, Tuple, Optional
 import base64
 from io import BytesIO
-from rdkit import Chem
-from rdkit.Chem import Draw, Descriptors
-import pubchempy as pcp
+from rdkit import Chem # type: ignore
+from rdkit.Chem import Draw, Descriptors # type: ignore
+import pubchempy as pcp # type: ignore
 
 st.set_page_config(
     page_title="ChemID Pro",
